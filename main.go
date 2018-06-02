@@ -3,6 +3,7 @@ package main
 import (
 	"io/ioutil"
 	"log"
+	"os"
 
 	"github.com/ry/v8worker2"
 )
@@ -26,12 +27,15 @@ func LoadReasonFile(worker *v8worker2.Worker, filename string) error {
 }
 
 func main() {
-	log.Println(v8worker2.Version())
-	// args := v8worker2.SetFlags([]string{"hello", "--harmony", "--use-strict", "--es-staging"})
-	// log.Println(args)
+	if len(os.Args) == 1 {
+		log.Println("Need a Reason script to run. Try `reasonable example.re`")
+		return
+	}
+
+	reasonFilename := os.Args[1]
+
 	var worker *v8worker2.Worker
 	worker = v8worker2.New(func(msg []byte) []byte {
-		// log.Println(msg)
 		if worker != nil {
 			err := worker.LoadModule("dummy.js", string(msg))
 			if err != nil {
@@ -62,8 +66,8 @@ func main() {
 		return
 	}
 
-	if err := LoadReasonFile(worker, "example.re"); err != nil {
-		log.Println("huh", err)
+	if err := LoadReasonFile(worker, reasonFilename); err != nil {
+		log.Println(err)
 		return
 	}
 }
