@@ -1,5 +1,3 @@
-[@bs.config no_export];
-
 [@bs.scope "V8Worker2"] [@bs.val] external print : string => unit = "print";
 
 /* Based on https://rosettacode.org/wiki/FizzBuzz#OCaml */
