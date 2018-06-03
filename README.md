@@ -3,7 +3,7 @@ ReasonML runtime built on Golang with v8worker2
 
 ## Status
 
-Basic Reason code will work but `[@bs.config no_export];` is required currently.
+Basic Reason code will work. Native ES imports/exports are used for modules.
 
 You can use `[@bs.scope "V8Worker2"] [@bs.val] external print : string => unit = "print";` to get access to the `print` method in v8worker2.
 
