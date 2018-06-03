@@ -5,16 +5,19 @@ import (
 	"log"
 	"os"
 
+	"github.com/gobuffalo/packr"
 	"github.com/ry/v8worker2"
 )
 
+var box packr.Box
+
 func LoadModuleByFilename(worker *v8worker2.Worker, filename string) error {
-	module, moduleErr := ioutil.ReadFile(filename)
+	module, moduleErr := box.MustString(filename)
 	if moduleErr != nil {
 		return moduleErr
 	}
 
-	return worker.LoadModule(filename, string(module))
+	return worker.LoadModule(filename, module)
 }
 
 func LoadReasonFile(worker *v8worker2.Worker, filename string) error {
@@ -24,6 +27,10 @@ func LoadReasonFile(worker *v8worker2.Worker, filename string) error {
 	}
 
 	return worker.SendBytes(code)
+}
+
+func init() {
+	box = packr.NewBox("./bs")
 }
 
 func main() {
