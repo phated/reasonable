@@ -13,13 +13,13 @@ import (
 
 var box packr.Box
 
-func LoadModuleByFilename(worker *v8worker2.Worker, filename string) error {
+func LoadModuleByFilename(worker *v8worker2.Worker, filename string, resolve v8worker2.ModuleResolverCallback) error {
 	module, moduleErr := box.MustString(filename)
 	if moduleErr != nil {
 		return moduleErr
 	}
 
-	return worker.LoadModule(filename, module)
+	return worker.LoadModule(filename, module, resolve)
 }
 
 func LoadReasonFile(worker *v8worker2.Worker, filename string) error {
@@ -35,6 +35,11 @@ func init() {
 	box = packr.NewBox("./bs")
 }
 
+// This can be used when you know there are no deps and you want it to fail.
+func failModuleResolver(_, _ string) int {
+	return 1
+}
+
 func main() {
 	if len(os.Args) == 1 {
 		log.Println("Need a Reason script to run. Try `reasonable example.re`")
@@ -43,21 +48,11 @@ func main() {
 
 	reasonFilename := os.Args[1]
 
+	var resolveModule v8worker2.ModuleResolverCallback
 	var worker *v8worker2.Worker
-	worker = v8worker2.New(func(msg []byte) []byte {
-		if worker != nil {
-			err := worker.LoadModule("dummy.js", string(msg))
-			if err != nil {
-				log.Println(err)
-				return nil
-			}
-		}
-		return nil
-	})
-
 	moduleNames := make(map[string]string)
 
-	worker.SetModuleResolver(func(moduleName, referrerName string) int {
+	resolveModule = func(moduleName, referrerName string) int {
 		if _, exists := moduleNames[moduleName]; exists {
 			return 0
 		}
@@ -77,34 +72,41 @@ func main() {
 				return 1
 			}
 
-			if err := worker.LoadModule(moduleName, code); err != nil {
-				return 1
-			}
-		} else {
-			if err := LoadReasonFile(worker, modulePath); err != nil {
+			if err := worker.LoadModule(moduleName, code, resolveModule); err != nil {
 				return 1
 			}
 		}
 
 		return 0
+	}
+
+	worker = v8worker2.New(func(msg []byte) []byte {
+		if worker != nil {
+			err := worker.LoadModule("main.js", string(msg), resolveModule)
+			if err != nil {
+				log.Println(err)
+				return nil
+			}
+		}
+		return nil
 	})
 
-	if err := LoadModuleByFilename(worker, "compiler.js"); err != nil {
+	if err := LoadModuleByFilename(worker, "compiler.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
 
-	if err := LoadModuleByFilename(worker, "refmt.js"); err != nil {
+	if err := LoadModuleByFilename(worker, "refmt.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
 
-	if err := LoadModuleByFilename(worker, "utils.js"); err != nil {
+	if err := LoadModuleByFilename(worker, "utils.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
 
-	if err := LoadModuleByFilename(worker, "run.js"); err != nil {
+	if err := LoadModuleByFilename(worker, "run.js", resolveModule); err != nil {
 		log.Println(err)
 		return
 	}
