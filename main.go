@@ -23,12 +23,27 @@ func LoadModuleByFilename(worker *v8worker2.Worker, filename string, resolve v8w
 	return worker.LoadModule(filename, module, resolve)
 }
 
-func LoadReasonFile(worker *v8worker2.Worker, filename string) error {
-	code, codeErr := ioutil.ReadFile(filename)
+func ReadAndWrapReason(path string) (string, error) {
+	code, codeErr := ioutil.ReadFile(path)
 	if codeErr != nil {
-		return codeErr
+		return "", codeErr
 	}
 
+	_, filename := filepath.Split(path)
+	ext := filepath.Ext(filename)
+
+	moduleID := strings.Title(strings.TrimSuffix(filename, ext))
+
+	moduleWrapper := `
+module %s = {
+	%s
+};
+	`
+
+	return fmt.Sprintf(moduleWrapper, moduleID, code), nil
+}
+
+func LoadReasonFile(worker *v8worker2.Worker, code []byte) error {
 	return worker.SendBytes(code)
 }
 
@@ -43,11 +58,12 @@ func failModuleResolver(_, _ string) int {
 
 func main() {
 	if len(os.Args) == 1 {
-		log.Println("Need a Reason script to run. Try `reasonable example.re`")
+		log.Println("Need a Reason script to run. Try `reasonable *.re`")
 		return
 	}
 
-	reasonFilename := os.Args[1]
+	paths := os.Args[1:]
+	// log.Println(paths)
 
 	var resolveModule v8worker2.ModuleResolverCallback
 	var worker *v8worker2.Worker
@@ -92,7 +108,8 @@ func main() {
 		return nil
 	})
 
-	if err := LoadModuleByFilename(worker, "compiler.js", failModuleResolver); err != nil {
+	// if err := LoadModuleByFilename(worker, "compiler.js", failModuleResolver); err != nil {
+	if err := LoadModuleByFilename(worker, "playground-refmt.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
@@ -112,7 +129,18 @@ func main() {
 		return
 	}
 
-	if err := LoadReasonFile(worker, reasonFilename); err != nil {
+	combinedModules := ""
+	for _, path := range paths {
+		module, err := ReadAndWrapReason(path)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		// log.Println(module)
+		combinedModules += module
+	}
+	log.Println(combinedModules)
+	if err := LoadReasonFile(worker, []byte(combinedModules)); err != nil {
 		log.Println(err)
 		return
 	}
