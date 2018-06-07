@@ -22,4 +22,6 @@ let student = [|{Foo.name: "Blaine"}, {Foo.name: "Jake"}, {Foo.name: "Nick"}|];
 
 let a = Belt.Array.map(student, s => s.name);
 
-Belt.Array.forEach(a, print)
+Belt.Array.forEach(a, print);
+
+/* Js.log(""); */
