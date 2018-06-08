@@ -1,16 +1,16 @@
 
 
-import * as $$Array from "./array.js";
-import * as Curry from "./curry.js";
-import * as Int32 from "./int32.js";
-import * as Int64 from "./int64.js";
-import * as Digest from "./digest.js";
-import * as Caml_sys from "./caml_sys.js";
-import * as Nativeint from "./nativeint.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_int64 from "./caml_int64.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as $$Array from "stdlib/array.js";
+import * as Curry from "stdlib/curry.js";
+import * as Int32 from "stdlib/int32.js";
+import * as Int64 from "stdlib/int64.js";
+import * as Digest from "stdlib/digest.js";
+import * as Caml_sys from "stdlib/caml_sys.js";
+import * as Nativeint from "stdlib/nativeint.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_int64 from "stdlib/caml_int64.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function assign(st1, st2) {
   $$Array.blit(st2[/* st */0], 0, st1[/* st */0], 0, 55);
@@ -305,6 +305,6 @@ export {
   State ,
   get_state ,
   set_state ,
-  
+
 }
 /* No side effect */

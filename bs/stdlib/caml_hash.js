@@ -1,8 +1,8 @@
 
 
-import * as Caml_queue from "./caml_queue.js";
-import * as Caml_hash_primitive from "./caml_hash_primitive.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_queue from "stdlib/caml_queue.js";
+import * as Caml_hash_primitive from "stdlib/caml_hash_primitive.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function caml_hash(count, _, seed, obj) {
   var hash = seed;
@@ -57,13 +57,13 @@ function caml_hash(count, _, seed, obj) {
                 }
               }
             }
-            
+
           }
-          
+
         }
-        
+
       }
-      
+
     };
     return Caml_hash_primitive.caml_hash_final_mix(hash);
   }
@@ -71,6 +71,6 @@ function caml_hash(count, _, seed, obj) {
 
 export {
   caml_hash ,
-  
+
 }
 /* No side effect */

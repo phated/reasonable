@@ -1,6 +1,6 @@
 
 
-import * as Belt_Array from "./belt_Array.js";
+import * as Belt_Array from "stdlib/belt_Array.js";
 
 function sortedLengthAuxMore(xs, _prec, _acc, len) {
   while(true) {
@@ -393,6 +393,6 @@ export {
   union ,
   intersect ,
   diff ,
-  
+
 }
 /* No side effect */

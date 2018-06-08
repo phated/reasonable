@@ -1,18 +1,18 @@
 
 
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
-import * as $$Buffer from "./buffer.js";
-import * as Js_exn from "./js_exn.js";
-import * as Printf from "./printf.js";
-import * as Random from "./random.js";
-import * as $$String from "./string.js";
-import * as Caml_sys from "./caml_sys.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_string from "./caml_string.js";
-import * as CamlinternalLazy from "./camlinternalLazy.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$Buffer from "stdlib/buffer.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Printf from "stdlib/printf.js";
+import * as Random from "stdlib/random.js";
+import * as $$String from "stdlib/string.js";
+import * as Caml_sys from "stdlib/caml_sys.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as CamlinternalLazy from "stdlib/camlinternalLazy.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function generic_basename(is_dir_sep, current_dir_name, name) {
   if (name === "") {
@@ -101,11 +101,11 @@ function is_relative(n) {
 }
 
 function is_implicit(n) {
-  if (is_relative(n) && (n.length < 2 || $$String.sub(n, 0, 2) !== "./")) {
+  if (is_relative(n) && (n.length < 2 || $$String.sub(n, 0, 2) !== "stdlib/")) {
     if (n.length < 3) {
       return true;
     } else {
-      return $$String.sub(n, 0, 3) !== "../";
+      return $$String.sub(n, 0, 3) !== ".stdlib/";
     }
   } else {
     return false;
@@ -357,6 +357,6 @@ export {
   set_temp_dir_name ,
   temp_dir_name$2 as temp_dir_name,
   quote$1 as quote,
-  
+
 }
 /* match Not a pure module */

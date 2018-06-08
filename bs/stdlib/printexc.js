@@ -1,17 +1,17 @@
 
 
-import * as Obj from "./obj.js";
-import * as $$Array from "./array.js";
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
-import * as $$Buffer from "./buffer.js";
-import * as Js_exn from "./js_exn.js";
-import * as Printf from "./printf.js";
-import * as Caml_io from "./caml_io.js";
-import * as Caml_array from "./caml_array.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_backtrace from "./caml_backtrace.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Obj from "stdlib/obj.js";
+import * as $$Array from "stdlib/array.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$Buffer from "stdlib/buffer.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Printf from "stdlib/printf.js";
+import * as Caml_io from "stdlib/caml_io.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_backtrace from "stdlib/caml_backtrace.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var printers = [/* [] */0];
 
@@ -124,10 +124,10 @@ function fields(x) {
                   ]), field(x, 1), other_fields(x, 2));
   } else {
     switch (n) {
-      case 0 : 
-      case 1 : 
+      case 0 :
+      case 1 :
           return "";
-      case 2 : 
+      case 2 :
           return Curry._1(Printf.sprintf(/* Format */[
                           /* Char_literal */Block.__(12, [
                               /* "(" */40,
@@ -141,7 +141,7 @@ function fields(x) {
                             ]),
                           "(%s)"
                         ]), field(x, 1));
-      
+
     }
   }
 }
@@ -340,7 +340,7 @@ function print_raw_backtrace(outchan, raw_backtrace) {
                   "%s\n"
                 ]), match[0]);
       }
-      
+
     }
     return /* () */0;
   } else {
@@ -376,7 +376,7 @@ function backtrace_to_string(backtrace) {
                   "%s\n"
                 ]), match[0]);
       }
-      
+
     }
     return $$Buffer.contents(b);
   } else {
@@ -529,6 +529,6 @@ export {
   convert_raw_backtrace_slot ,
   exn_slot_id ,
   exn_slot_name ,
-  
+
 }
 /* No side effect */

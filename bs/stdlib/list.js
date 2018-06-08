@@ -1,9 +1,9 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function length(l) {
   var _len = 0;
@@ -892,7 +892,7 @@ function stable_sort(cmp, l) {
         }
       };
     }
-    
+
   };
   var rev_sort = function (n, l) {
     var exit = 0;
@@ -1051,7 +1051,7 @@ function stable_sort(cmp, l) {
         }
       };
     }
-    
+
   };
   var len = length(l);
   if (len < 2) {
@@ -1303,7 +1303,7 @@ function sort_uniq(cmp, l) {
         }
       };
     }
-    
+
   };
   var rev_sort = function (n, l) {
     var exit = 0;
@@ -1546,7 +1546,7 @@ function sort_uniq(cmp, l) {
         }
       };
     }
-    
+
   };
   var len = length(l);
   if (len < 2) {
@@ -1611,6 +1611,6 @@ export {
   fast_sort ,
   sort_uniq ,
   merge ,
-  
+
 }
 /* No side effect */

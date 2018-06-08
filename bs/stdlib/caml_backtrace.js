@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function caml_convert_raw_backtrace_slot() {
   throw [
@@ -11,6 +11,6 @@ function caml_convert_raw_backtrace_slot() {
 
 export {
   caml_convert_raw_backtrace_slot ,
-  
+
 }
 /* No side effect */

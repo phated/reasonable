@@ -1,9 +1,9 @@
 
 
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
-import * as Printf from "./printf.js";
-import * as Caml_gc from "./caml_gc.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
+import * as Printf from "stdlib/printf.js";
+import * as Caml_gc from "stdlib/caml_gc.js";
 
 function print_stat(c) {
   var st = Caml_gc.caml_gc_stat(/* () */0);
@@ -274,6 +274,6 @@ export {
   finalise_release ,
   create_alarm ,
   delete_alarm ,
-  
+
 }
 /* No side effect */

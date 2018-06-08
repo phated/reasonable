@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function merge(order, l1, l2) {
   if (l1) {
@@ -116,7 +116,7 @@ function array(cmp, arr) {
           if (Curry._2(cmp, arr[mid], arr[lo])) {
             swap(arr, mid, lo);
           }
-          
+
         }
         var pivot = arr[mid];
         var i = lo + 1 | 0;
@@ -166,7 +166,7 @@ function array(cmp, arr) {
       };
       arr[j] = val_i;
     }
-    
+
   }
   return /* () */0;
 }
@@ -175,6 +175,6 @@ export {
   list ,
   array ,
   merge ,
-  
+
 }
 /* No side effect */

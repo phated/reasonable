@@ -1,6 +1,6 @@
 
 
-import * as Js_vector from "./js_vector.js";
+import * as Js_vector from "stdlib/js_vector.js";
 
 function length(l) {
   var _len = 0;
@@ -347,6 +347,6 @@ export {
   init ,
   toVector ,
   equal ,
-  
+
 }
 /* No side effect */

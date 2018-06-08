@@ -1,18 +1,18 @@
 
 
-import * as Block from "./block.js";
-import * as Bytes from "./bytes.js";
-import * as Curry from "./curry.js";
-import * as $$Buffer from "./buffer.js";
-import * as $$String from "./string.js";
-import * as Caml_io from "./caml_io.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as CamlinternalFormat from "./camlinternalFormat.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Block from "stdlib/block.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$Buffer from "stdlib/buffer.js";
+import * as $$String from "stdlib/string.js";
+import * as Caml_io from "stdlib/caml_io.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as CamlinternalFormat from "stdlib/camlinternalFormat.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function add_queue(x, q) {
   var c = /* Cons */[/* record */[
@@ -109,7 +109,7 @@ function pp_force_break_line(state) {
 function format_pp_token(state, size, param) {
   if (typeof param === "number") {
     switch (param) {
-      case 0 : 
+      case 0 :
           var match = state[/* pp_tbox_stack */2];
           if (match) {
             var tabs = match[0][0];
@@ -139,7 +139,7 @@ function format_pp_token(state, size, param) {
           } else {
             return /* () */0;
           }
-      case 1 : 
+      case 1 :
           var match$1 = state[/* pp_format_stack */1];
           if (match$1) {
             state[/* pp_format_stack */1] = match$1[1];
@@ -147,7 +147,7 @@ function format_pp_token(state, size, param) {
           } else {
             return /* () */0;
           }
-      case 2 : 
+      case 2 :
           var match$2 = state[/* pp_tbox_stack */2];
           if (match$2) {
             state[/* pp_tbox_stack */2] = match$2[1];
@@ -155,14 +155,14 @@ function format_pp_token(state, size, param) {
           } else {
             return /* () */0;
           }
-      case 3 : 
+      case 3 :
           var match$3 = state[/* pp_format_stack */1];
           if (match$3) {
             return break_new_line(state, 0, match$3[0][1]);
           } else {
             return Curry._1(state[/* pp_out_newline */18], /* () */0);
           }
-      case 4 : 
+      case 4 :
           if (state[/* pp_current_indent */9] !== (state[/* pp_margin */5] - state[/* pp_space_left */8] | 0)) {
             var state$1 = state;
             var match$4 = take_queue(state$1[/* pp_queue */26]);
@@ -173,7 +173,7 @@ function format_pp_token(state, size, param) {
           } else {
             return 0;
           }
-      case 5 : 
+      case 5 :
           var match$5 = state[/* pp_mark_stack */4];
           if (match$5) {
             var marker = Curry._1(state[/* pp_mark_close_tag */23], match$5[0]);
@@ -183,16 +183,16 @@ function format_pp_token(state, size, param) {
           } else {
             return /* () */0;
           }
-      
+
     }
   } else {
     switch (param.tag | 0) {
-      case 0 : 
+      case 0 :
           state[/* pp_space_left */8] = state[/* pp_space_left */8] - size | 0;
           pp_output_string(state, param[0]);
           state[/* pp_is_new_line */10] = false;
           return /* () */0;
-      case 1 : 
+      case 1 :
           var off = param[1];
           var n = param[0];
           var match$6 = state[/* pp_format_stack */1];
@@ -200,30 +200,30 @@ function format_pp_token(state, size, param) {
             var match$7 = match$6[0];
             var width = match$7[1];
             switch (match$7[0]) {
-              case 1 : 
-              case 2 : 
+              case 1 :
+              case 2 :
                   return break_new_line(state, off, width);
-              case 3 : 
+              case 3 :
                   if (size > state[/* pp_space_left */8]) {
                     return break_new_line(state, off, width);
                   } else {
                     return break_same_line(state, n);
                   }
-              case 4 : 
+              case 4 :
                   if (state[/* pp_is_new_line */10] || !(size > state[/* pp_space_left */8] || state[/* pp_current_indent */9] > ((state[/* pp_margin */5] - width | 0) + off | 0))) {
                     return break_same_line(state, n);
                   } else {
                     return break_new_line(state, off, width);
                   }
-              case 0 : 
-              case 5 : 
+              case 0 :
+              case 5 :
                   return break_same_line(state, n);
-              
+
             }
           } else {
             return /* () */0;
           }
-      case 2 : 
+      case 2 :
           var insertion_point = state[/* pp_margin */5] - state[/* pp_space_left */8] | 0;
           var match$8 = state[/* pp_tbox_stack */2];
           if (match$8) {
@@ -269,7 +269,7 @@ function format_pp_token(state, size, param) {
           } else {
             return /* () */0;
           }
-      case 3 : 
+      case 3 :
           var ty = param[1];
           var insertion_point$1 = state[/* pp_margin */5] - state[/* pp_space_left */8] | 0;
           if (insertion_point$1 > state[/* pp_max_indent */7]) {
@@ -287,13 +287,13 @@ function format_pp_token(state, size, param) {
             state[/* pp_format_stack */1]
           ];
           return /* () */0;
-      case 4 : 
+      case 4 :
           state[/* pp_tbox_stack */2] = /* :: */[
             param[0],
             state[/* pp_tbox_stack */2]
           ];
           return /* () */0;
-      case 5 : 
+      case 5 :
           var tag_name = param[0];
           var marker$1 = Curry._1(state[/* pp_mark_open_tag */22], tag_name);
           pp_output_string(state, marker$1);
@@ -302,7 +302,7 @@ function format_pp_token(state, size, param) {
             state[/* pp_mark_stack */4]
           ];
           return /* () */0;
-      
+
     }
   }
 }
@@ -378,11 +378,11 @@ function set_size(state, ty) {
         return /* () */0;
       } else {
         switch (tmp.tag | 0) {
-          case 1 : 
-          case 2 : 
+          case 1 :
+          case 2 :
               exit = 1;
               break;
-          case 3 : 
+          case 3 :
               if (ty) {
                 return 0;
               } else {
@@ -403,7 +403,7 @@ function set_size(state, ty) {
           return 0;
         }
       }
-      
+
     }
   } else {
     return /* () */0;
@@ -1284,32 +1284,32 @@ function compute_tag(output, tag_acc) {
 function output_formatting_lit(ppf, fmting_lit) {
   if (typeof fmting_lit === "number") {
     switch (fmting_lit) {
-      case 0 : 
+      case 0 :
           return pp_close_box(ppf, /* () */0);
-      case 1 : 
+      case 1 :
           return pp_close_tag(ppf, /* () */0);
-      case 2 : 
+      case 2 :
           return pp_print_flush(ppf, /* () */0);
-      case 3 : 
+      case 3 :
           return pp_force_newline(ppf, /* () */0);
-      case 4 : 
+      case 4 :
           return pp_print_newline(ppf, /* () */0);
-      case 5 : 
+      case 5 :
           return pp_print_char(ppf, /* "@" */64);
-      case 6 : 
+      case 6 :
           return pp_print_char(ppf, /* "%" */37);
-      
+
     }
   } else {
     switch (fmting_lit.tag | 0) {
-      case 0 : 
+      case 0 :
           return pp_print_break(ppf, fmting_lit[1], fmting_lit[2]);
-      case 1 : 
+      case 1 :
           return /* () */0;
-      case 2 : 
+      case 2 :
           pp_print_char(ppf, /* "@" */64);
           return pp_print_char(ppf, fmting_lit[0]);
-      
+
     }
   }
 }
@@ -1326,10 +1326,10 @@ function output_acc(ppf, acc) {
     return /* () */0;
   } else {
     switch (acc.tag | 0) {
-      case 0 : 
+      case 0 :
           output_acc(ppf, acc[0]);
           return output_formatting_lit(ppf, acc[1]);
-      case 1 : 
+      case 1 :
           var match = acc[1];
           var p$2 = acc[0];
           output_acc(ppf, p$2);
@@ -1339,7 +1339,7 @@ function output_acc(ppf, acc) {
           } else {
             return pp_open_tag(ppf, compute_tag(output_acc, match[0]));
           }
-      case 2 : 
+      case 2 :
           var p$3 = acc[0];
           var exit$1 = 0;
           if (typeof p$3 === "number" || p$3.tag) {
@@ -1360,7 +1360,7 @@ function output_acc(ppf, acc) {
             return pp_print_string(ppf, acc[1]);
           }
           break;
-      case 3 : 
+      case 3 :
           var p$4 = acc[0];
           var exit$2 = 0;
           if (typeof p$4 === "number" || p$4.tag) {
@@ -1381,7 +1381,7 @@ function output_acc(ppf, acc) {
             return pp_print_char(ppf, acc[1]);
           }
           break;
-      case 4 : 
+      case 4 :
           var p$5 = acc[0];
           var exit$3 = 0;
           if (typeof p$5 === "number" || p$5.tag) {
@@ -1402,7 +1402,7 @@ function output_acc(ppf, acc) {
             return pp_print_string(ppf, acc[1]);
           }
           break;
-      case 5 : 
+      case 5 :
           var p$6 = acc[0];
           var exit$4 = 0;
           if (typeof p$6 === "number" || p$6.tag) {
@@ -1423,29 +1423,29 @@ function output_acc(ppf, acc) {
             return pp_print_char(ppf, acc[1]);
           }
           break;
-      case 6 : 
+      case 6 :
           output_acc(ppf, acc[0]);
           return Curry._1(acc[1], ppf);
-      case 7 : 
+      case 7 :
           output_acc(ppf, acc[0]);
           return pp_print_flush(ppf, /* () */0);
-      case 8 : 
+      case 8 :
           output_acc(ppf, acc[0]);
           throw [
                 Caml_builtin_exceptions.invalid_argument,
                 acc[1]
               ];
-      
+
     }
   }
   switch (exit) {
-    case 1 : 
+    case 1 :
         output_acc(ppf, p);
         return pp_print_as_size(ppf, size, s);
-    case 2 : 
+    case 2 :
         output_acc(ppf, p$1);
         return pp_print_as_size(ppf, size$1, Caml_string.bytes_to_string(Bytes.make(1, c)));
-    
+
   }
 }
 
@@ -1461,10 +1461,10 @@ function strput_acc(ppf, acc) {
     return /* () */0;
   } else {
     switch (acc.tag | 0) {
-      case 0 : 
+      case 0 :
           strput_acc(ppf, acc[0]);
           return output_formatting_lit(ppf, acc[1]);
-      case 1 : 
+      case 1 :
           var match = acc[1];
           var p$2 = acc[0];
           strput_acc(ppf, p$2);
@@ -1474,7 +1474,7 @@ function strput_acc(ppf, acc) {
           } else {
             return pp_open_tag(ppf, compute_tag(strput_acc, match[0]));
           }
-      case 2 : 
+      case 2 :
           var p$3 = acc[0];
           var exit$1 = 0;
           if (typeof p$3 === "number" || p$3.tag) {
@@ -1495,7 +1495,7 @@ function strput_acc(ppf, acc) {
             return pp_print_string(ppf, acc[1]);
           }
           break;
-      case 3 : 
+      case 3 :
           var p$4 = acc[0];
           var exit$2 = 0;
           if (typeof p$4 === "number" || p$4.tag) {
@@ -1516,7 +1516,7 @@ function strput_acc(ppf, acc) {
             return pp_print_char(ppf, acc[1]);
           }
           break;
-      case 4 : 
+      case 4 :
           var p$5 = acc[0];
           var exit$3 = 0;
           if (typeof p$5 === "number" || p$5.tag) {
@@ -1537,7 +1537,7 @@ function strput_acc(ppf, acc) {
             return pp_print_string(ppf, acc[1]);
           }
           break;
-      case 5 : 
+      case 5 :
           var p$6 = acc[0];
           var exit$4 = 0;
           if (typeof p$6 === "number" || p$6.tag) {
@@ -1558,7 +1558,7 @@ function strput_acc(ppf, acc) {
             return pp_print_char(ppf, acc[1]);
           }
           break;
-      case 6 : 
+      case 6 :
           var p$7 = acc[0];
           var exit$5 = 0;
           if (typeof p$7 === "number" || p$7.tag) {
@@ -1577,26 +1577,26 @@ function strput_acc(ppf, acc) {
             return pp_print_string(ppf, Curry._1(acc[1], /* () */0));
           }
           break;
-      case 7 : 
+      case 7 :
           strput_acc(ppf, acc[0]);
           return pp_print_flush(ppf, /* () */0);
-      case 8 : 
+      case 8 :
           strput_acc(ppf, acc[0]);
           throw [
                 Caml_builtin_exceptions.invalid_argument,
                 acc[1]
               ];
-      
+
     }
   }
   switch (exit) {
-    case 1 : 
+    case 1 :
         strput_acc(ppf, p);
         return pp_print_as_size(ppf, size, s);
-    case 2 : 
+    case 2 :
         strput_acc(ppf, p$1);
         return pp_print_as_size(ppf, size$1, Caml_string.bytes_to_string(Bytes.make(1, c)));
-    
+
   }
 }
 
@@ -1792,6 +1792,6 @@ export {
   get_all_formatter_output_functions ,
   pp_set_all_formatter_output_functions ,
   pp_get_all_formatter_output_functions ,
-  
+
 }
 /* blank_line Not a pure module */

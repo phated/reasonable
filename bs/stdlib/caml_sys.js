@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function caml_sys_getenv(s) {
   var match = typeof (process) === "undefined" ? undefined : (process);
@@ -97,6 +97,6 @@ export {
   caml_sys_exit ,
   caml_sys_is_directory ,
   caml_sys_file_exists ,
-  
+
 }
 /* No side effect */

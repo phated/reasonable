@@ -1,14 +1,14 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_io from "./caml_io.js";
-import * as Caml_sys from "./caml_sys.js";
-import * as Caml_format from "./caml_format.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
-import * as CamlinternalFormatBasics from "./camlinternalFormatBasics.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_io from "stdlib/caml_io.js";
+import * as Caml_sys from "stdlib/caml_sys.js";
+import * as Caml_format from "stdlib/caml_format.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
+import * as CamlinternalFormatBasics from "stdlib/camlinternalFormatBasics.js";
 
 function failwith(s) {
   throw [
@@ -61,9 +61,9 @@ function string_of_bool(b) {
 
 function bool_of_string(param) {
   switch (param) {
-    case "false" : 
+    case "false" :
         return false;
-    case "true" : 
+    case "true" :
         return true;
     default:
       throw [
@@ -165,7 +165,7 @@ function flush_all() {
         Caml_io.caml_ml_flush(param[0]);
       }
       catch (exn){
-        
+
       }
       _param = param[1];
       continue ;
@@ -219,7 +219,7 @@ function close_out_noerr(oc) {
     Caml_io.caml_ml_flush(oc);
   }
   catch (exn){
-    
+
   }
   try {
     return Caml_missing_polyfill.not_implemented("caml_ml_close_channel");
@@ -630,6 +630,6 @@ export {
   valid_float_lexem ,
   unsafe_really_input ,
   do_at_exit ,
-  
+
 }
 /* No side effect */

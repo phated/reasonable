@@ -1,8 +1,8 @@
 
 
-import * as List from "./list.js";
-import * as Curry from "./curry.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as List from "stdlib/list.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function Make(funarg) {
   var height = function (param) {
@@ -606,12 +606,12 @@ function Make(funarg) {
                     exit = 1;
                   } else {
                     switch (n) {
-                      case 0 : 
+                      case 0 :
                           return /* tuple */[
                                   /* Empty */0,
                                   l
                                 ];
-                      case 1 : 
+                      case 1 :
                           if (l) {
                             return /* tuple */[
                                     /* Node */[
@@ -626,7 +626,7 @@ function Make(funarg) {
                             exit = 1;
                           }
                           break;
-                      case 2 : 
+                      case 2 :
                           if (l) {
                             var match = l[1];
                             if (match) {
@@ -651,7 +651,7 @@ function Make(funarg) {
                             exit = 1;
                           }
                           break;
-                      case 3 : 
+                      case 3 :
                           if (l) {
                             var match$1 = l[1];
                             if (match$1) {
@@ -686,7 +686,7 @@ function Make(funarg) {
                             exit = 1;
                           }
                           break;
-                      
+
                     }
                   }
                   if (exit === 1) {
@@ -710,7 +710,7 @@ function Make(funarg) {
                           ];
                     }
                   }
-                  
+
                 };
                 return sub(List.length(l$1), l$1)[0];
               } else {
@@ -764,6 +764,6 @@ function Make(funarg) {
 
 export {
   Make ,
-  
+
 }
 /* No side effect */

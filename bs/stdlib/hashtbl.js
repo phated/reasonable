@@ -1,16 +1,16 @@
 
 
-import * as $$Array from "./array.js";
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
-import * as Random from "./random.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_hash from "./caml_hash.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as CamlinternalLazy from "./camlinternalLazy.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as $$Array from "stdlib/array.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
+import * as Random from "stdlib/random.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_hash from "stdlib/caml_hash.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as CamlinternalLazy from "stdlib/camlinternalLazy.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function hash(x) {
   return Caml_hash.caml_hash(10, 100, 0, x);
@@ -776,6 +776,6 @@ export {
   seeded_hash ,
   hash_param ,
   seeded_hash_param ,
-  
+
 }
 /* No side effect */

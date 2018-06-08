@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function div(x, y) {
   if (y === 0) {
@@ -27,7 +27,7 @@ function caml_int32_bswap(x) {
 }
 
 var imul = ( Math.imul || function (x,y) {
-  y |= 0; return ((((x >> 16) * y) << 16) + (x & 0xffff) * y)|0; 
+  y |= 0; return ((((x >> 16) * y) << 16) + (x & 0xffff) * y)|0;
 }
 );
 
@@ -40,6 +40,6 @@ export {
   caml_int32_bswap ,
   caml_nativeint_bswap ,
   imul ,
-  
+
 }
 /* imul Not a pure module */

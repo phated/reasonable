@@ -1,8 +1,8 @@
 
 
-import * as Caml_hash_primitive from "./caml_hash_primitive.js";
-import * as Belt_internalBuckets from "./belt_internalBuckets.js";
-import * as Belt_internalBucketsType from "./belt_internalBucketsType.js";
+import * as Caml_hash_primitive from "stdlib/caml_hash_primitive.js";
+import * as Belt_internalBuckets from "stdlib/belt_internalBuckets.js";
+import * as Belt_internalBucketsType from "stdlib/belt_internalBucketsType.js";
 
 function copyBucketReHash(h_buckets, ndata_tail, _old_bucket) {
   while(true) {
@@ -57,7 +57,7 @@ function set(h, key, value) {
       };
       h.size = h.size + 1 | 0;
     }
-    
+
   } else {
     h_buckets[i] = {
       key: key,
@@ -83,7 +83,7 @@ function set(h, key, value) {
         if (match !== undefined) {
           match.next = Belt_internalBucketsType.emptyOpt;
         }
-        
+
       }
       return /* () */0;
     } else {
@@ -283,6 +283,6 @@ export {
   mergeMany ,
   getBucketHistogram ,
   logStats ,
-  
+
 }
 /* No side effect */

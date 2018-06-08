@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_oo from "./caml_oo.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_oo from "stdlib/caml_oo.js";
 
 function js(label, cacheid, obj, args) {
   var meth = Caml_oo.caml_get_public_method(obj, label, cacheid);
@@ -50,6 +50,6 @@ export {
   js6 ,
   js7 ,
   js8 ,
-  
+
 }
 /* No side effect */

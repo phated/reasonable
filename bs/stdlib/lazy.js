@@ -1,9 +1,9 @@
 
 
-import * as Obj from "./obj.js";
-import * as Block from "./block.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as CamlinternalLazy from "./camlinternalLazy.js";
+import * as Obj from "stdlib/obj.js";
+import * as Block from "stdlib/block.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as CamlinternalLazy from "stdlib/camlinternalLazy.js";
 
 function from_fun(f) {
   var x = Block.__(Obj.lazy_tag, [0]);
@@ -43,6 +43,6 @@ export {
   lazy_from_fun ,
   lazy_from_val ,
   lazy_is_val ,
-  
+
 }
 /* No side effect */

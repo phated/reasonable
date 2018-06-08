@@ -1,13 +1,13 @@
 
 
-import * as Char from "./char.js";
-import * as List from "./list.js";
-import * as Curry from "./curry.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_int32 from "./caml_int32.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Char from "stdlib/char.js";
+import * as List from "stdlib/list.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function make(n, c) {
   var s = Caml_string.caml_create_string(n);
@@ -233,43 +233,43 @@ function escaped(s) {
         exit = 1;
       } else {
         switch (c) {
-          case 8 : 
+          case 8 :
               s$prime[n] = /* "\\" */92;
               n = n + 1 | 0;
               s$prime[n] = /* "b" */98;
               break;
-          case 9 : 
+          case 9 :
               s$prime[n] = /* "\\" */92;
               n = n + 1 | 0;
               s$prime[n] = /* "t" */116;
               break;
-          case 10 : 
+          case 10 :
               s$prime[n] = /* "\\" */92;
               n = n + 1 | 0;
               s$prime[n] = /* "n" */110;
               break;
-          case 0 : 
-          case 1 : 
-          case 2 : 
-          case 3 : 
-          case 4 : 
-          case 5 : 
-          case 6 : 
-          case 7 : 
-          case 11 : 
-          case 12 : 
+          case 0 :
+          case 1 :
+          case 2 :
+          case 3 :
+          case 4 :
+          case 5 :
+          case 6 :
+          case 7 :
+          case 11 :
+          case 12 :
               exit = 1;
               break;
-          case 13 : 
+          case 13 :
               s$prime[n] = /* "\\" */92;
               n = n + 1 | 0;
               s$prime[n] = /* "r" */114;
               break;
-          
+
         }
       }
       switch (exit) {
-        case 1 : 
+        case 1 :
             s$prime[n] = /* "\\" */92;
             n = n + 1 | 0;
             s$prime[n] = 48 + (c / 100 | 0) | 0;
@@ -278,12 +278,12 @@ function escaped(s) {
             n = n + 1 | 0;
             s$prime[n] = 48 + c % 10 | 0;
             break;
-        case 2 : 
+        case 2 :
             s$prime[n] = /* "\\" */92;
             n = n + 1 | 0;
             s$prime[n] = c;
             break;
-        
+
       }
       n = n + 1 | 0;
     }
@@ -490,6 +490,6 @@ export {
   compare ,
   unsafe_to_string ,
   unsafe_of_string ,
-  
+
 }
 /* No side effect */

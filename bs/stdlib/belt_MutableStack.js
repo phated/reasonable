@@ -1,6 +1,6 @@
 
 
-import * as Curry from "./curry.js";
+import * as Curry from "stdlib/curry.js";
 
 function make() {
   return {
@@ -140,6 +140,6 @@ export {
   forEach ,
   dynamicPopIterU ,
   dynamicPopIter ,
-  
+
 }
 /* No side effect */

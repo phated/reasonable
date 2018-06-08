@@ -1,6 +1,6 @@
 
 
-import * as CamlinternalOO from "./camlinternalOO.js";
+import * as CamlinternalOO from "stdlib/camlinternalOO.js";
 
 var copy = CamlinternalOO.copy;
 
@@ -12,6 +12,6 @@ export {
   copy ,
   new_method ,
   public_method_label ,
-  
+
 }
 /* No side effect */

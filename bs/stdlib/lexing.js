@@ -1,13 +1,13 @@
 
 
-import * as Bytes from "./bytes.js";
-import * as Curry from "./curry.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_bytes from "./caml_bytes.js";
-import * as Caml_lexer from "./caml_lexer.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_bytes from "stdlib/caml_bytes.js";
+import * as Caml_lexer from "stdlib/caml_lexer.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function engine(tbl, state, buf) {
   var result = Caml_lexer.caml_lex_engine(tbl, state, buf);
@@ -82,7 +82,7 @@ function from_function(f) {
                   if (v >= 0) {
                     Caml_array.caml_array_set(t, i, v - s | 0);
                   }
-                  
+
                 }
               }
               Bytes.blit(aux_buffer, 0, lexbuf[/* lex_buffer */1], lexbuf[/* lex_buffer_len */2], n);
@@ -231,6 +231,6 @@ export {
   sub_lexeme_char_opt ,
   engine ,
   new_engine ,
-  
+
 }
 /* No side effect */

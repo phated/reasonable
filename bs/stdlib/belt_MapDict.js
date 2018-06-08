@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_internalAVLtree from "./belt_internalAVLtree.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_internalAVLtree from "stdlib/belt_internalAVLtree.js";
 
 function set(t, newK, newD, cmp) {
   if (t !== null) {
@@ -411,6 +411,6 @@ export {
   map ,
   mapWithKeyU ,
   mapWithKey ,
-  
+
 }
 /* No side effect */

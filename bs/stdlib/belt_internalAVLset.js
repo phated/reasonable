@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_SortArray from "./belt_SortArray.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_SortArray from "stdlib/belt_SortArray.js";
 
 function treeHeight(n) {
   if (n !== null) {
@@ -490,11 +490,11 @@ function fromSortedArrayRevAux(arr, off, len) {
     return create(left, mid, right);
   } else {
     switch (len) {
-      case 0 : 
+      case 0 :
           return null;
-      case 1 : 
+      case 1 :
           return singleton(arr[off]);
-      case 2 : 
+      case 2 :
           var x0 = arr[off];
           var x1 = arr[off - 1 | 0];
           return {
@@ -503,7 +503,7 @@ function fromSortedArrayRevAux(arr, off, len) {
                   left: singleton(x0),
                   right: null
                 };
-      case 3 : 
+      case 3 :
           var x0$1 = arr[off];
           var x1$1 = arr[off - 1 | 0];
           var x2 = arr[off - 2 | 0];
@@ -513,7 +513,7 @@ function fromSortedArrayRevAux(arr, off, len) {
                   left: singleton(x0$1),
                   right: singleton(x2)
                 };
-      
+
     }
   }
 }
@@ -527,11 +527,11 @@ function fromSortedArrayAux(arr, off, len) {
     return create(left, mid, right);
   } else {
     switch (len) {
-      case 0 : 
+      case 0 :
           return null;
-      case 1 : 
+      case 1 :
           return singleton(arr[off]);
-      case 2 : 
+      case 2 :
           var x0 = arr[off];
           var x1 = arr[off + 1 | 0];
           return {
@@ -540,7 +540,7 @@ function fromSortedArrayAux(arr, off, len) {
                   left: singleton(x0),
                   right: null
                 };
-      case 3 : 
+      case 3 :
           var x0$1 = arr[off];
           var x1$1 = arr[off + 1 | 0];
           var x2 = arr[off + 2 | 0];
@@ -550,7 +550,7 @@ function fromSortedArrayAux(arr, off, len) {
                   left: singleton(x0$1),
                   right: singleton(x2)
                 };
-      
+
     }
   }
 }
@@ -971,6 +971,6 @@ export {
   addMutate ,
   balMutate ,
   removeMinAuxWithRootMutate ,
-  
+
 }
 /* No side effect */

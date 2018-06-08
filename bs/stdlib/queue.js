@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
 
 var Empty = Caml_exceptions.create("Queue.Empty");
 
@@ -194,6 +194,6 @@ export {
   iter ,
   fold ,
   transfer ,
-  
+
 }
 /* No side effect */

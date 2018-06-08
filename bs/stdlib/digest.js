@@ -1,12 +1,12 @@
 
 
-import * as Char from "./char.js";
-import * as $$String from "./string.js";
-import * as Caml_md5 from "./caml_md5.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Char from "stdlib/char.js";
+import * as $$String from "stdlib/string.js";
+import * as Caml_md5 from "stdlib/caml_md5.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function string(str) {
   return Caml_md5.caml_md5_string(str, 0, str.length);
@@ -47,7 +47,7 @@ function file(filename) {
     Caml_missing_polyfill.not_implemented("caml_ml_close_channel");
     return d;
   }
-  
+
 }
 
 var output = Pervasives.output_string;
@@ -130,6 +130,6 @@ export {
   input ,
   to_hex ,
   from_hex ,
-  
+
 }
 /* No side effect */

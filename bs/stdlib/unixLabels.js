@@ -1,6 +1,6 @@
 
 
-import * as Unix from "./unix.js";
+import * as Unix from "stdlib/unix.js";
 
 var Unix_error = Unix.Unix_error;
 
@@ -480,6 +480,6 @@ export {
   tcflush ,
   tcflow ,
   setsid ,
-  
+
 }
 /* Unix Not a pure module */

@@ -1,7 +1,7 @@
 
 
-import * as Caml_array from "./caml_array.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var caml_methods_cache = Caml_array.caml_make_vect(1000, 0);
 
@@ -38,6 +38,6 @@ function caml_get_public_method(obj, tag, cacheid) {
 
 export {
   caml_get_public_method ,
-  
+
 }
 /* No side effect */

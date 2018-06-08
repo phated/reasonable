@@ -1,8 +1,8 @@
 
 
-import * as Caml_string from "./caml_string.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function to_buffer(buff, ofs, len, _, _$1) {
   if (ofs < 0 || len < 0 || ofs > (buff.length - len | 0)) {
@@ -72,6 +72,6 @@ export {
   header_size ,
   data_size ,
   total_size ,
-  
+
 }
 /* No side effect */

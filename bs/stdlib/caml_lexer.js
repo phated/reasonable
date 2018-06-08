@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function fail() {
   throw [
@@ -9,7 +9,7 @@ function fail() {
       ];
 }
 
- 
+
 
 /***********************************************************************/
 /*                                                                     */
@@ -20,7 +20,7 @@ function fail() {
 /*  Copyright 1996 Institut National de Recherche en Informatique et   */
 /*  en Automatique.  All rights reserved.  This file is distributed    */
 /*  under the terms of the GNU Library General Public License, with    */
-/*  the special exception on linking described in file ../LICENSE.     */
+/*  the special exception on linking described in file .stdlib/LICENSE.     */
 /*                                                                     */
 /***********************************************************************/
 
@@ -32,9 +32,9 @@ function caml_lex_array(s) {
     var l = s.length / 2;
     var a = new Array(l);
     // when s.charCodeAt(2 * i + 1 ) > 128 (0x80)
-    // a[i] < 0  
+    // a[i] < 0
     // for(var i = 0 ; i <= 0xffff; ++i) { if (i << 16 >> 16 !==i){console.log(i<<16>>16, 'vs',i)}}
-    // 
+    //
     for (var i = 0; i < l; i++)
         a[i] = (s.charCodeAt(2 * i) | (s.charCodeAt(2 * i + 1) << 8)) << 16 >> 16;
     return a;
@@ -165,8 +165,8 @@ function $$caml_lex_engine(tbl, start_state, lexbuf) {
 /**
  * s -> Lexing.lex_tables.lex_code
  * mem -> Lexing.lexbuf.lex_mem (* int array *)
- */          
-          
+ */
+
 function caml_lex_run_mem(s, i, mem, curr_pos) {
     for (;;) {
         var dst = s.charCodeAt(i);
@@ -187,7 +187,7 @@ function caml_lex_run_mem(s, i, mem, curr_pos) {
  * s -> Lexing.lex_tables.lex_code
  * mem -> Lexing.lexbuf.lex_mem (* int array *)
  */
-  
+
 function caml_lex_run_tag(s, i, mem) {
     for (;;) {
         var dst = s.charCodeAt(i);
@@ -335,6 +335,6 @@ export {
   fail ,
   caml_lex_engine ,
   caml_new_lex_engine ,
-  
+
 }
 /*  Not a pure module */

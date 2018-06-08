@@ -1,8 +1,8 @@
 
 
-import * as Caml_array from "./caml_array.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function dims() {
   var n = Caml_missing_polyfill.not_implemented("caml_ba_num_dims");
@@ -270,6 +270,6 @@ export {
   reshape_1 ,
   reshape_2 ,
   reshape_3 ,
-  
+
 }
 /*  Not a pure module */

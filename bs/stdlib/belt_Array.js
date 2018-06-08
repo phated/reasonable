@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Js_math from "./js_math.js";
-import * as Caml_primitive from "./caml_primitive.js";
+import * as Curry from "stdlib/curry.js";
+import * as Js_math from "stdlib/js_math.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
 
 function get(arr, i) {
   if (i >= 0 && i < arr.length) {
@@ -310,7 +310,7 @@ function keepU(a, f) {
       r[j] = v;
       j = j + 1 | 0;
     }
-    
+
   }
   r.length = j;
   return r;
@@ -331,7 +331,7 @@ function keepMapU(a, f) {
       r[j] = match[0];
       j = j + 1 | 0;
     }
-    
+
   }
   r.length = j;
   return r;
@@ -642,6 +642,6 @@ export {
   cmp ,
   eqU ,
   eq ,
-  
+
 }
 /* No side effect */

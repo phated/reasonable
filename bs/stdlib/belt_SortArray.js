@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_Array from "./belt_Array.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_Array from "stdlib/belt_Array.js";
 
 function sortedLengthAuxMore(xs, _prec, _acc, len, lt) {
   while(true) {
@@ -449,6 +449,6 @@ export {
   intersect ,
   diffU ,
   diff ,
-  
+
 }
 /* No side effect */

@@ -1,7 +1,7 @@
 
 
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
 
 function getExn(param) {
   if (param.tag) {
@@ -122,6 +122,6 @@ export {
   eq ,
   cmpU ,
   cmp ,
-  
+
 }
 /* No side effect */

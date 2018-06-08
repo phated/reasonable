@@ -1,6 +1,6 @@
 
 
-import * as Block from "./block.js";
+import * as Block from "stdlib/block.js";
 
 function reify_type(x) {
   if (typeof x === "undefined") {
@@ -73,23 +73,23 @@ function classify(x) {
 
 function test(x, v) {
   switch (v) {
-    case 0 : 
+    case 0 :
         return typeof x === "undefined";
-    case 1 : 
+    case 1 :
         return x === null;
-    case 2 : 
+    case 2 :
         return typeof x === "boolean";
-    case 3 : 
+    case 3 :
         return typeof x === "number";
-    case 4 : 
+    case 4 :
         return typeof x === "string";
-    case 5 : 
+    case 5 :
         return typeof x === "function";
-    case 6 : 
+    case 6 :
         return typeof x === "object";
-    case 7 : 
+    case 7 :
         return typeof x === "symbol";
-    
+
   }
 }
 
@@ -97,6 +97,6 @@ export {
   reify_type ,
   test ,
   classify ,
-  
+
 }
 /* No side effect */

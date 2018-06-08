@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_Array from "./belt_Array.js";
-import * as Belt_SortArray from "./belt_SortArray.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_Array from "stdlib/belt_Array.js";
+import * as Belt_SortArray from "stdlib/belt_SortArray.js";
 
 function head(x) {
   if (x) {
@@ -1456,6 +1456,6 @@ export {
   setAssoc ,
   sortU ,
   sort ,
-  
+
 }
 /* No side effect */

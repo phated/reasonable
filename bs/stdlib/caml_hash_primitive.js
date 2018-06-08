@@ -1,6 +1,6 @@
 
 
-import * as Caml_int32 from "./caml_int32.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
 
 function rotl32(x, n) {
   return (x << n) | (x >>> (32 - n | 0));
@@ -48,6 +48,6 @@ export {
   caml_hash_mix_int ,
   caml_hash_mix_string ,
   caml_hash_final_mix ,
-  
+
 }
 /* No side effect */

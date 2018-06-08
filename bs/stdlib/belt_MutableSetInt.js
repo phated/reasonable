@@ -1,9 +1,9 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_SortArrayInt from "./belt_SortArrayInt.js";
-import * as Belt_internalAVLset from "./belt_internalAVLset.js";
-import * as Belt_internalSetInt from "./belt_internalSetInt.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_SortArrayInt from "stdlib/belt_SortArrayInt.js";
+import * as Belt_internalAVLset from "stdlib/belt_internalAVLset.js";
+import * as Belt_internalSetInt from "stdlib/belt_internalSetInt.js";
 
 function remove0(nt, x) {
   var k = nt.value;
@@ -514,6 +514,6 @@ export {
   getExn ,
   split ,
   checkInvariantInternal ,
-  
+
 }
 /* No side effect */

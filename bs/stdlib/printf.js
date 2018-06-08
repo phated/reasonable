@@ -1,9 +1,9 @@
 
 
-import * as Curry from "./curry.js";
-import * as $$Buffer from "./buffer.js";
-import * as Pervasives from "./pervasives.js";
-import * as CamlinternalFormat from "./camlinternalFormat.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$Buffer from "stdlib/buffer.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as CamlinternalFormat from "stdlib/camlinternalFormat.js";
 
 function kfprintf(k, o, param) {
   return CamlinternalFormat.make_printf((function (o, acc) {
@@ -80,6 +80,6 @@ export {
   ksprintf ,
   kbprintf ,
   kprintf ,
-  
+
 }
 /* No side effect */
