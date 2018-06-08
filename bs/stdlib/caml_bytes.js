@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function get(s, i) {
   if (i < 0 || i >= s.length) {
@@ -15,6 +15,6 @@ function get(s, i) {
 
 export {
   get ,
-  
+
 }
 /* No side effect */

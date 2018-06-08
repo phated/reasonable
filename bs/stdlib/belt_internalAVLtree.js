@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_SortArray from "./belt_SortArray.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_SortArray from "stdlib/belt_SortArray.js";
 
 function treeHeight(n) {
   if (n !== null) {
@@ -707,12 +707,12 @@ function fromSortedArrayRevAux(arr, off, len) {
     return create(left, match[0], match[1], right);
   } else {
     switch (len) {
-      case 0 : 
+      case 0 :
           return null;
-      case 1 : 
+      case 1 :
           var match$1 = arr[off];
           return singleton(match$1[0], match$1[1]);
-      case 2 : 
+      case 2 :
           var match_000 = arr[off];
           var match_001 = arr[off - 1 | 0];
           var match$2 = match_001;
@@ -724,7 +724,7 @@ function fromSortedArrayRevAux(arr, off, len) {
                   left: singleton(match$3[0], match$3[1]),
                   right: null
                 };
-      case 3 : 
+      case 3 :
           var match_000$1 = arr[off];
           var match_001$1 = arr[off - 1 | 0];
           var match_002 = arr[off - 2 | 0];
@@ -738,7 +738,7 @@ function fromSortedArrayRevAux(arr, off, len) {
                   left: singleton(match$6[0], match$6[1]),
                   right: singleton(match$4[0], match$4[1])
                 };
-      
+
     }
   }
 }
@@ -752,12 +752,12 @@ function fromSortedArrayAux(arr, off, len) {
     return create(left, match[0], match[1], right);
   } else {
     switch (len) {
-      case 0 : 
+      case 0 :
           return null;
-      case 1 : 
+      case 1 :
           var match$1 = arr[off];
           return singleton(match$1[0], match$1[1]);
-      case 2 : 
+      case 2 :
           var match_000 = arr[off];
           var match_001 = arr[off + 1 | 0];
           var match$2 = match_001;
@@ -769,7 +769,7 @@ function fromSortedArrayAux(arr, off, len) {
                   left: singleton(match$3[0], match$3[1]),
                   right: null
                 };
-      case 3 : 
+      case 3 :
           var match_000$1 = arr[off];
           var match_001$1 = arr[off + 1 | 0];
           var match_002 = arr[off + 2 | 0];
@@ -783,7 +783,7 @@ function fromSortedArrayAux(arr, off, len) {
                   left: singleton(match$6[0], match$6[1]),
                   right: singleton(match$4[0], match$4[1])
                 };
-      
+
     }
   }
 }
@@ -1165,6 +1165,6 @@ export {
   updateMutate ,
   balMutate ,
   removeMinAuxWithRootMutate ,
-  
+
 }
 /* No side effect */

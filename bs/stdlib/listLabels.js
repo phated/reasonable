@@ -1,6 +1,6 @@
 
 
-import * as List from "./list.js";
+import * as List from "stdlib/list.js";
 
 var length = List.length;
 
@@ -132,6 +132,6 @@ export {
   stable_sort ,
   fast_sort ,
   merge ,
-  
+
 }
 /* No side effect */

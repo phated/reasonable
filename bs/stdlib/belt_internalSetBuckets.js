@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_Array from "./belt_Array.js";
-import * as Belt_internalBucketsType from "./belt_internalBucketsType.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_Array from "stdlib/belt_Array.js";
+import * as Belt_internalBucketsType from "stdlib/belt_internalBucketsType.js";
 
 function copyAuxCont(_c, _prec) {
   while(true) {
@@ -118,7 +118,7 @@ function toArray(h) {
     if (cell !== undefined) {
       current = fillArray(current, arr, cell);
     }
-    
+
   }
   return arr;
 }
@@ -197,6 +197,6 @@ export {
   reduce ,
   logStats ,
   getBucketHistogram ,
-  
+
 }
 /* No side effect */

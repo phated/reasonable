@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function Make(funarg) {
   var height = function (param) {
@@ -447,7 +447,7 @@ function Make(funarg) {
             ];
       }
     }
-    
+
   };
   var filter = function (p, param) {
     if (param) {
@@ -623,6 +623,6 @@ function Make(funarg) {
 
 export {
   Make ,
-  
+
 }
 /* No side effect */

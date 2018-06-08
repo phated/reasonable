@@ -1,8 +1,8 @@
 
 
-import * as $$Map from "./map.js";
-import * as $$Set from "./set.js";
-import * as Hashtbl from "./hashtbl.js";
+import * as $$Map from "stdlib/map.js";
+import * as $$Set from "stdlib/set.js";
+import * as Hashtbl from "stdlib/hashtbl.js";
 
 var Hashtbl$1 = /* Hashtbl */[
   Hashtbl.create,
@@ -36,6 +36,6 @@ export {
   Hashtbl$1 as Hashtbl,
   $$Map$1 as $$Map,
   $$Set$1 as $$Set,
-  
+
 }
 /* No side effect */

@@ -1,6 +1,6 @@
 
 
-import * as Belt_internalAVLset from "./belt_internalAVLset.js";
+import * as Belt_internalAVLset from "stdlib/belt_internalAVLset.js";
 
 function add(t, x, cmp) {
   if (t !== null) {
@@ -356,6 +356,6 @@ export {
   getExn ,
   split ,
   checkInvariantInternal ,
-  
+
 }
 /* No side effect */

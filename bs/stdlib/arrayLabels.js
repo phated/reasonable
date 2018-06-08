@@ -1,6 +1,6 @@
 
 
-import * as $$Array from "./array.js";
+import * as $$Array from "stdlib/array.js";
 
 var init = $$Array.init;
 
@@ -63,6 +63,6 @@ export {
   sort ,
   stable_sort ,
   fast_sort ,
-  
+
 }
 /* No side effect */

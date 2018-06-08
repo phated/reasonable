@@ -1,6 +1,6 @@
 
 
-import * as Obj from "./obj.js";
+import * as Obj from "stdlib/obj.js";
 
 function register(_, _$1) {
   return /* () */0;
@@ -14,6 +14,6 @@ function register_exception(_, exn) {
 export {
   register ,
   register_exception ,
-  
+
 }
 /* No side effect */

@@ -1,14 +1,14 @@
 
 
-import * as $$Array from "./array.js";
-import * as Curry from "./curry.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_weak from "./caml_weak.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_int32 from "./caml_int32.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as $$Array from "stdlib/array.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_weak from "stdlib/caml_weak.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function fill(ar, ofs, len, x) {
   if (ofs < 0 || len < 0 || (ofs + len | 0) > ar.length) {
@@ -185,7 +185,7 @@ function Make(H) {
       if (len > t[/* limit */2] && prev_len <= t[/* limit */2]) {
         t[/* oversize */3] = t[/* oversize */3] - 1 | 0;
       }
-      
+
     }
     t[/* rover */4] = (t[/* rover */4] + 1 | 0) % t[/* table */0].length;
     return /* () */0;
@@ -452,6 +452,6 @@ export {
   fill ,
   blit ,
   Make ,
-  
+
 }
 /* No side effect */

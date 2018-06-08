@@ -1,9 +1,9 @@
 
 
-import * as Marshal from "./marshal.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Marshal from "stdlib/marshal.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var double_field = Caml_array.caml_array_get;
 
@@ -144,6 +144,6 @@ export {
   extension_slot$1 as extension_slot,
   marshal ,
   unmarshal ,
-  
+
 }
 /* No side effect */

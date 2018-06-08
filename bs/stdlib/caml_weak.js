@@ -1,8 +1,8 @@
 
 
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_array from "./caml_array.js";
-import * as Js_primitive from "./js_primitive.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Js_primitive from "stdlib/js_primitive.js";
 
 function caml_weak_create(n) {
   return new Array(n);
@@ -43,6 +43,6 @@ export {
   caml_weak_get_copy ,
   caml_weak_check ,
   caml_weak_blit ,
-  
+
 }
 /* No side effect */

@@ -1,6 +1,6 @@
 
 
-import * as Curry from "./curry.js";
+import * as Curry from "stdlib/curry.js";
 
 function forEachU(s, f, action) {
   for(var i = s; i <= f; ++i){
@@ -112,6 +112,6 @@ export {
   some ,
   someByU ,
   someBy ,
-  
+
 }
 /* No side effect */

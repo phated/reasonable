@@ -1,6 +1,6 @@
 
 
-import * as Curry from "./curry.js";
+import * as Curry from "stdlib/curry.js";
 
 function MakeComparableU(M) {
   var cmp = M[/* cmp */0];
@@ -67,6 +67,6 @@ export {
   MakeHashable ,
   hashableU ,
   hashable ,
-  
+
 }
 /* No side effect */

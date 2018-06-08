@@ -1,8 +1,8 @@
 
 
-import * as Caml_hash_primitive from "./caml_hash_primitive.js";
-import * as Belt_internalSetBuckets from "./belt_internalSetBuckets.js";
-import * as Belt_internalBucketsType from "./belt_internalBucketsType.js";
+import * as Caml_hash_primitive from "stdlib/caml_hash_primitive.js";
+import * as Belt_internalSetBuckets from "stdlib/belt_internalSetBuckets.js";
+import * as Belt_internalBucketsType from "stdlib/belt_internalBucketsType.js";
 
 function copyBucket(h_buckets, ndata_tail, _old_bucket) {
   while(true) {
@@ -117,7 +117,7 @@ function add(h, key) {
         if (match !== undefined) {
           match.next = Belt_internalBucketsType.emptyOpt;
         }
-        
+
       }
       return /* () */0;
     } else {
@@ -217,6 +217,6 @@ export {
   fromArray ,
   mergeMany ,
   getBucketHistogram ,
-  
+
 }
 /* No side effect */

@@ -1,9 +1,9 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_SortArray from "./belt_SortArray.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Belt_internalAVLtree from "./belt_internalAVLtree.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_SortArray from "stdlib/belt_SortArray.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Belt_internalAVLtree from "stdlib/belt_internalAVLtree.js";
 
 function add(t, x, data) {
   if (t !== null) {
@@ -222,7 +222,7 @@ function mergeU(s1, s2, f) {
       return /* assert false */0;
     }
   }
-  
+
 }
 
 function merge(s1, s2, f) {
@@ -380,6 +380,6 @@ export {
   eq ,
   addMutate ,
   fromArray ,
-  
+
 }
 /* No side effect */

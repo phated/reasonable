@@ -1,6 +1,6 @@
 
 
-import * as Js_int from "./js_int.js";
+import * as Js_int from "stdlib/js_int.js";
 
 function unsafe_ceil(prim) {
   return Math.ceil(prim);
@@ -46,6 +46,6 @@ export {
   floor_int ,
   floor ,
   random_int ,
-  
+
 }
 /* No side effect */

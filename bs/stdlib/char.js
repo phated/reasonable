@@ -1,7 +1,7 @@
 
 
-import * as Caml_string from "./caml_string.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function chr(n) {
   if (n < 0 || n > 255) {
@@ -32,42 +32,42 @@ function escaped(c) {
     exit = 1;
   } else {
     switch (c) {
-      case 8 : 
+      case 8 :
           return "\\b";
-      case 9 : 
+      case 9 :
           return "\\t";
-      case 10 : 
+      case 10 :
           return "\\n";
-      case 0 : 
-      case 1 : 
-      case 2 : 
-      case 3 : 
-      case 4 : 
-      case 5 : 
-      case 6 : 
-      case 7 : 
-      case 11 : 
-      case 12 : 
+      case 0 :
+      case 1 :
+      case 2 :
+      case 3 :
+      case 4 :
+      case 5 :
+      case 6 :
+      case 7 :
+      case 11 :
+      case 12 :
           exit = 1;
           break;
-      case 13 : 
+      case 13 :
           return "\\r";
-      
+
     }
   }
   switch (exit) {
-    case 1 : 
+    case 1 :
         var s = Caml_string.caml_create_string(4);
         s[0] = /* "\\" */92;
         s[1] = 48 + (c / 100 | 0) | 0;
         s[2] = 48 + (c / 10 | 0) % 10 | 0;
         s[3] = 48 + c % 10 | 0;
         return Caml_string.bytes_to_string(s);
-    case 2 : 
+    case 2 :
         var s$1 = Caml_string.caml_create_string(1);
         s$1[0] = c;
         return Caml_string.bytes_to_string(s$1);
-    
+
   }
 }
 
@@ -97,6 +97,6 @@ export {
   lowercase ,
   uppercase ,
   compare ,
-  
+
 }
 /* No side effect */

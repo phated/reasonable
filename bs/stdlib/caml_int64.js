@@ -1,9 +1,9 @@
 
 
-import * as Caml_int32 from "./caml_int32.js";
-import * as Caml_utils from "./caml_utils.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Caml_utils from "stdlib/caml_utils.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var min_int = /* record */[
   /* hi */-2147483648,
@@ -261,7 +261,7 @@ function mul(_this, _other) {
                 ];
         }
       }
-      
+
     }
     if (exit === 1) {
       if ((lo & 1) === 0) {
@@ -270,7 +270,7 @@ function mul(_this, _other) {
         return min_int;
       }
     }
-    
+
   };
 }
 
@@ -425,7 +425,7 @@ function div(_self, _other) {
           var rem = add(self, neg(y));
           return add(approx, div(rem, other));
         }
-        
+
       }
     }
     if (exit === 1) {
@@ -470,9 +470,9 @@ function div(_self, _other) {
           return res;
         }
       }
-      
+
     }
-    
+
   };
 }
 
@@ -539,7 +539,7 @@ function to_hex(x) {
       return aux(x[/* hi */0]) + "00000000";
     }
   }
-  
+
 }
 
 function discard_sign(x) {
@@ -621,6 +621,6 @@ export {
   float_of_bits ,
   bits_of_float ,
   get64 ,
-  
+
 }
 /* two_ptr_32_dbl Not a pure module */

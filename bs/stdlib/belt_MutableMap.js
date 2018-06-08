@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_internalAVLtree from "./belt_internalAVLtree.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_internalAVLtree from "stdlib/belt_internalAVLtree.js";
 
 function removeMutateAux(nt, x, cmp) {
   var k = nt.key;
@@ -406,6 +406,6 @@ export {
   map ,
   mapWithKeyU ,
   mapWithKey ,
-  
+
 }
 /* No side effect */

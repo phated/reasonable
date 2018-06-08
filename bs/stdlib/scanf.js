@@ -1,23 +1,23 @@
 
 
-import * as List from "./list.js";
-import * as Block from "./block.js";
-import * as Bytes from "./bytes.js";
-import * as Curry from "./curry.js";
-import * as $$Buffer from "./buffer.js";
-import * as Js_exn from "./js_exn.js";
-import * as Printf from "./printf.js";
-import * as $$String from "./string.js";
-import * as Caml_bytes from "./caml_bytes.js";
-import * as Caml_int32 from "./caml_int32.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_format from "./caml_format.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as CamlinternalFormat from "./camlinternalFormat.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
-import * as CamlinternalFormatBasics from "./camlinternalFormatBasics.js";
+import * as List from "stdlib/list.js";
+import * as Block from "stdlib/block.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$Buffer from "stdlib/buffer.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Printf from "stdlib/printf.js";
+import * as $$String from "stdlib/string.js";
+import * as Caml_bytes from "stdlib/caml_bytes.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_format from "stdlib/caml_format.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as CamlinternalFormat from "stdlib/camlinternalFormat.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
+import * as CamlinternalFormatBasics from "stdlib/camlinternalFormatBasics.js";
 
 function next_char(ib) {
   try {
@@ -353,9 +353,9 @@ function token_char(ib) {
 function token_bool(ib) {
   var s = token(ib);
   switch (s) {
-    case "false" : 
+    case "false" :
         return false;
-    case "true" : 
+    case "true" :
         return true;
     default:
       var s$1 = Curry._1(Printf.sprintf(/* Format */[
@@ -383,50 +383,50 @@ function token_int_literal(conv, ib) {
     exit = 1;
   } else {
     switch (switcher) {
-      case 10 : 
+      case 10 :
           tok = "0b" + token(ib);
           break;
-      case 23 : 
+      case 23 :
           tok = "0o" + token(ib);
           break;
-      case 12 : 
-      case 17 : 
-      case 29 : 
+      case 12 :
+      case 17 :
+      case 29 :
           tok = token(ib);
           break;
-      case 1 : 
-      case 2 : 
-      case 3 : 
-      case 4 : 
-      case 5 : 
-      case 6 : 
-      case 7 : 
-      case 8 : 
-      case 9 : 
-      case 11 : 
-      case 13 : 
-      case 14 : 
-      case 15 : 
-      case 16 : 
-      case 18 : 
-      case 19 : 
-      case 20 : 
-      case 21 : 
-      case 22 : 
-      case 24 : 
-      case 25 : 
-      case 26 : 
-      case 27 : 
-      case 28 : 
-      case 30 : 
-      case 31 : 
+      case 1 :
+      case 2 :
+      case 3 :
+      case 4 :
+      case 5 :
+      case 6 :
+      case 7 :
+      case 8 :
+      case 9 :
+      case 11 :
+      case 13 :
+      case 14 :
+      case 15 :
+      case 16 :
+      case 18 :
+      case 19 :
+      case 20 :
+      case 21 :
+      case 22 :
+      case 24 :
+      case 25 :
+      case 26 :
+      case 27 :
+      case 28 :
+      case 30 :
+      case 31 :
           exit = 1;
           break;
-      case 0 : 
-      case 32 : 
+      case 0 :
+      case 32 :
           tok = "0x" + token(ib);
           break;
-      
+
     }
   }
   if (exit === 1) {
@@ -607,11 +607,11 @@ function scan_int_conv(conv, width, ib) {
     exit = 1;
   } else {
     switch (switcher) {
-      case 10 : 
+      case 10 :
           return scan_binary_int(width, ib);
-      case 12 : 
+      case 12 :
           return scan_optionally_signed_decimal_int(width, ib);
-      case 17 : 
+      case 17 :
           var width$1 = width;
           var ib$1 = ib;
           var width$2 = scan_sign(width$1, ib$1);
@@ -649,42 +649,42 @@ function scan_int_conv(conv, width, ib) {
               }
             }
           }
-      case 23 : 
+      case 23 :
           return scan_octal_int(width, ib);
-      case 29 : 
+      case 29 :
           return scan_decimal_digits_plus(width, ib);
-      case 1 : 
-      case 2 : 
-      case 3 : 
-      case 4 : 
-      case 5 : 
-      case 6 : 
-      case 7 : 
-      case 8 : 
-      case 9 : 
-      case 11 : 
-      case 13 : 
-      case 14 : 
-      case 15 : 
-      case 16 : 
-      case 18 : 
-      case 19 : 
-      case 20 : 
-      case 21 : 
-      case 22 : 
-      case 24 : 
-      case 25 : 
-      case 26 : 
-      case 27 : 
-      case 28 : 
-      case 30 : 
-      case 31 : 
+      case 1 :
+      case 2 :
+      case 3 :
+      case 4 :
+      case 5 :
+      case 6 :
+      case 7 :
+      case 8 :
+      case 9 :
+      case 11 :
+      case 13 :
+      case 14 :
+      case 15 :
+      case 16 :
+      case 18 :
+      case 19 :
+      case 20 :
+      case 21 :
+      case 22 :
+      case 24 :
+      case 25 :
+      case 26 :
+      case 27 :
+      case 28 :
+      case 30 :
+      case 31 :
           exit = 1;
           break;
-      case 0 : 
-      case 32 : 
+      case 0 :
+      case 32 :
           return scan_hexadecimal_int(width, ib);
-      
+
     }
   }
   if (exit === 1) {
@@ -697,7 +697,7 @@ function scan_int_conv(conv, width, ib) {
           ]
         ];
   }
-  
+
 }
 
 function scan_frac_part(width, ib) {
@@ -850,18 +850,18 @@ function char_for_backslash(c) {
       return c;
     } else {
       switch (c - 110 | 0) {
-        case 0 : 
+        case 0 :
             return /* "\n" */10;
-        case 4 : 
+        case 4 :
             return /* "\r" */13;
-        case 1 : 
-        case 2 : 
-        case 3 : 
-        case 5 : 
+        case 1 :
+        case 2 :
+        case 3 :
+        case 5 :
             return c;
-        case 6 : 
+        case 6 :
             return /* "\t" */9;
-        
+
       }
     }
   } else if (c !== 98) {
@@ -959,38 +959,38 @@ function scan_backslash_char(width, ib) {
         return bad_input_escape(c);
       } else {
         switch (switcher) {
-          case 0 : 
-          case 6 : 
-          case 18 : 
-          case 22 : 
-          case 24 : 
+          case 0 :
+          case 6 :
+          case 18 :
+          case 22 :
+          case 24 :
               exit = 1;
               break;
-          case 1 : 
-          case 2 : 
-          case 3 : 
-          case 4 : 
-          case 5 : 
-          case 7 : 
-          case 8 : 
-          case 9 : 
-          case 10 : 
-          case 11 : 
-          case 12 : 
-          case 13 : 
-          case 14 : 
-          case 15 : 
-          case 16 : 
-          case 17 : 
-          case 19 : 
-          case 20 : 
-          case 21 : 
-          case 23 : 
-          case 25 : 
-          case 26 : 
-          case 27 : 
+          case 1 :
+          case 2 :
+          case 3 :
+          case 4 :
+          case 5 :
+          case 7 :
+          case 8 :
+          case 9 :
+          case 10 :
+          case 11 :
+          case 12 :
+          case 13 :
+          case 14 :
+          case 15 :
+          case 16 :
+          case 17 :
+          case 19 :
+          case 20 :
+          case 21 :
+          case 23 :
+          case 25 :
+          case 26 :
+          case 27 :
               return bad_input_escape(c);
-          case 28 : 
+          case 28 :
               var get_digit = function () {
                 var c = next_char(ib);
                 var switcher = c - 48 | 0;
@@ -1009,7 +1009,7 @@ function scan_backslash_char(width, ib) {
               var c1 = get_digit(/* () */0);
               var c2 = get_digit(/* () */0);
               return store_char(width - 2 | 0, ib, char_for_hexadecimal_code(c1, c2));
-          
+
         }
       }
     } else if (c >= 48) {
@@ -1035,7 +1035,7 @@ function scan_backslash_char(width, ib) {
   if (exit === 1) {
     return store_char(width, ib, char_for_backslash(c));
   }
-  
+
 }
 
 function scan_caml_char(width, ib) {
@@ -1230,18 +1230,18 @@ function scanf_bad_input(ib, x) {
           s$1
         ];
   }
-  
+
 }
 
 function get_counter(ib, counter) {
   switch (counter) {
-    case 0 : 
+    case 0 :
         return ib[/* line_count */4];
-    case 1 : 
+    case 1 :
         return char_count(ib);
-    case 2 : 
+    case 2 :
         return ib[/* token_count */5];
-    
+
   }
 }
 
@@ -1277,19 +1277,19 @@ function take_format_readers(k, _fmt) {
       return Curry._1(k, /* Nil */0);
     } else {
       switch (fmt.tag | 0) {
-        case 4 : 
-        case 5 : 
-        case 6 : 
-        case 7 : 
-        case 8 : 
+        case 4 :
+        case 5 :
+        case 6 :
+        case 7 :
+        case 8 :
             _fmt = fmt[3];
             continue ;
-        case 14 : 
+        case 14 :
             return take_fmtty_format_readers(k, CamlinternalFormatBasics.erase_rel(CamlinternalFormat.symm(fmt[1])), fmt[2]);
-        case 18 : 
+        case 18 :
             _fmt = CamlinternalFormatBasics.concat_fmt(fmt[0][0][0], fmt[1]);
             continue ;
-        case 19 : 
+        case 19 :
             var fmt_rest = fmt[0];
             return (function(fmt_rest){
             return function (reader) {
@@ -1302,15 +1302,15 @@ function take_format_readers(k, _fmt) {
               return take_format_readers(new_k, fmt_rest);
             }
             }(fmt_rest));
-        case 2 : 
-        case 3 : 
-        case 11 : 
-        case 12 : 
-        case 17 : 
-        case 21 : 
+        case 2 :
+        case 3 :
+        case 11 :
+        case 12 :
+        case 17 :
+        case 21 :
             _fmt = fmt[1];
             continue ;
-        case 23 : 
+        case 23 :
             var k$1 = k;
             var ign = fmt[0];
             var fmt$1 = fmt[1];
@@ -1335,9 +1335,9 @@ function take_format_readers(k, _fmt) {
             } else {
               return take_format_readers(k$1, fmt$1);
             }
-        case 13 : 
-        case 20 : 
-        case 24 : 
+        case 13 :
+        case 20 :
+        case 24 :
             _fmt = fmt[2];
             continue ;
         default:
@@ -1355,14 +1355,14 @@ function take_fmtty_format_readers(k, _fmtty, fmt) {
       return take_format_readers(k, fmt);
     } else {
       switch (fmtty.tag | 0) {
-        case 8 : 
+        case 8 :
             _fmtty = fmtty[1];
             continue ;
-        case 9 : 
+        case 9 :
             var ty = CamlinternalFormat.trans(CamlinternalFormat.symm(fmtty[0]), fmtty[1]);
             _fmtty = CamlinternalFormatBasics.concat_fmtty(ty, fmtty[2]);
             continue ;
-        case 13 : 
+        case 13 :
             var fmt_rest = fmtty[0];
             return (function(fmt_rest){
             return function (reader) {
@@ -1375,7 +1375,7 @@ function take_fmtty_format_readers(k, _fmtty, fmt) {
               return take_fmtty_format_readers(new_k, fmt_rest, fmt);
             }
             }(fmt_rest));
-        case 14 : 
+        case 14 :
             var fmt_rest$1 = fmtty[0];
             return (function(fmt_rest$1){
             return function (reader) {
@@ -1403,21 +1403,21 @@ function make_scanf(ib, _fmt, readers) {
       return /* Nil */0;
     } else {
       switch (fmt.tag | 0) {
-        case 0 : 
+        case 0 :
             scan_char(0, ib);
             var c = token_char(ib);
             return /* Cons */[
                     c,
                     make_scanf(ib, fmt[0], readers)
                   ];
-        case 1 : 
+        case 1 :
             scan_caml_char(0, ib);
             var c$1 = token_char(ib);
             return /* Cons */[
                     c$1,
                     make_scanf(ib, fmt[0], readers)
                   ];
-        case 2 : 
+        case 2 :
             var rest = fmt[1];
             var pad = fmt[0];
             var exit = 0;
@@ -1425,7 +1425,7 @@ function make_scanf(ib, _fmt, readers) {
               exit = 1;
             } else {
               switch (rest.tag | 0) {
-                case 17 : 
+                case 17 :
                     var match = stopper_of_formatting_lit(rest[0]);
                     var stp = match[0];
                     var scan = (function(stp){
@@ -1440,7 +1440,7 @@ function make_scanf(ib, _fmt, readers) {
                         str_rest_001
                       ]);
                     return pad_prec_scanf(ib, str_rest, readers, pad, /* No_precision */0, scan, token);
-                case 18 : 
+                case 18 :
                     var match$1 = rest[0];
                     if (match$1.tag) {
                       var scan$1 = function (width, _, ib) {
@@ -1464,12 +1464,12 @@ function make_scanf(ib, _fmt, readers) {
               return pad_prec_scanf(ib, rest, readers, pad, /* No_precision */0, scan$3, token);
             }
             break;
-        case 3 : 
+        case 3 :
             var scan$4 = function (width, _, ib) {
               return scan_caml_string(width, ib);
             };
             return pad_prec_scanf(ib, fmt[1], readers, fmt[0], /* No_precision */0, scan$4, token);
-        case 4 : 
+        case 4 :
             var c$2 = CamlinternalFormat.char_of_iconv(fmt[0]);
             var scan$5 = (function(c$2){
             return function scan$5(width, _, ib) {
@@ -1481,7 +1481,7 @@ function make_scanf(ib, _fmt, readers) {
                         return Caml_format.caml_int_of_string(token_int_literal(c$2, param));
                       }
                       }(c$2)));
-        case 5 : 
+        case 5 :
             var c$3 = CamlinternalFormat.char_of_iconv(fmt[0]);
             var scan$6 = (function(c$3){
             return function scan$6(width, _, ib) {
@@ -1493,7 +1493,7 @@ function make_scanf(ib, _fmt, readers) {
                         return Caml_format.caml_int32_of_string(token_int_literal(c$3, param));
                       }
                       }(c$3)));
-        case 6 : 
+        case 6 :
             var c$4 = CamlinternalFormat.char_of_iconv(fmt[0]);
             var scan$7 = (function(c$4){
             return function scan$7(width, _, ib) {
@@ -1505,7 +1505,7 @@ function make_scanf(ib, _fmt, readers) {
                         return Caml_format.caml_nativeint_of_string(token_int_literal(c$4, param));
                       }
                       }(c$4)));
-        case 7 : 
+        case 7 :
             var c$5 = CamlinternalFormat.char_of_iconv(fmt[0]);
             var scan$8 = (function(c$5){
             return function scan$8(width, _, ib) {
@@ -1517,20 +1517,20 @@ function make_scanf(ib, _fmt, readers) {
                         return Caml_format.caml_int64_of_string(token_int_literal(c$5, param));
                       }
                       }(c$5)));
-        case 8 : 
+        case 8 :
             if (fmt[0] >= 15) {
               return pad_prec_scanf(ib, fmt[3], readers, fmt[1], fmt[2], scan_caml_float, token_float);
             } else {
               return pad_prec_scanf(ib, fmt[3], readers, fmt[1], fmt[2], scan_float, token_float);
             }
-        case 9 : 
+        case 9 :
             scan_bool(ib);
             var b = token_bool(ib);
             return /* Cons */[
                     b,
                     make_scanf(ib, fmt[0], readers)
                   ];
-        case 10 : 
+        case 10 :
             if (end_of_input(ib)) {
               _fmt = fmt[0];
               continue ;
@@ -1540,18 +1540,18 @@ function make_scanf(ib, _fmt, readers) {
                     "end of input not found"
                   ];
             }
-        case 11 : 
+        case 11 :
             var f = function (param) {
               return check_char(ib, param);
             };
             Bytes.iter(f, Caml_string.bytes_of_string(fmt[0]));
             _fmt = fmt[1];
             continue ;
-        case 12 : 
+        case 12 :
             check_char(ib, fmt[0]);
             _fmt = fmt[1];
             continue ;
-        case 13 : 
+        case 13 :
             scan_caml_string(width_of_pad_opt(fmt[0]), ib);
             var s = token(ib);
             var fmt$1;
@@ -1573,7 +1573,7 @@ function make_scanf(ib, _fmt, readers) {
                     fmt$1,
                     make_scanf(ib, fmt[2], readers)
                   ];
-        case 14 : 
+        case 14 :
             var fmtty = fmt[1];
             scan_caml_string(width_of_pad_opt(fmt[0]), ib);
             var s$1 = token(ib);
@@ -1604,17 +1604,17 @@ function make_scanf(ib, _fmt, readers) {
                     ],
                     make_scanf(ib, CamlinternalFormatBasics.concat_fmt(match$2[1], fmt[2]), readers)
                   ];
-        case 15 : 
+        case 15 :
             throw [
                   Caml_builtin_exceptions.invalid_argument,
                   "scanf: bad conversion \"%a\""
                 ];
-        case 16 : 
+        case 16 :
             throw [
                   Caml_builtin_exceptions.invalid_argument,
                   "scanf: bad conversion \"%t\""
                 ];
-        case 17 : 
+        case 17 :
             var s$2 = CamlinternalFormat.string_of_formatting_lit(fmt[0]);
             var f$1 = function (param) {
               return check_char(ib, param);
@@ -1622,7 +1622,7 @@ function make_scanf(ib, _fmt, readers) {
             Bytes.iter(f$1, Caml_string.bytes_of_string(s$2));
             _fmt = fmt[1];
             continue ;
-        case 18 : 
+        case 18 :
             var match$5 = fmt[0];
             check_char(ib, /* "@" */64);
             if (match$5.tag) {
@@ -1634,13 +1634,13 @@ function make_scanf(ib, _fmt, readers) {
               _fmt = CamlinternalFormatBasics.concat_fmt(match$5[0][0], fmt[1]);
               continue ;
             }
-        case 19 : 
+        case 19 :
             var x = Curry._1(readers[0], ib);
             return /* Cons */[
                     x,
                     make_scanf(ib, fmt[0], readers[1])
                   ];
-        case 20 : 
+        case 20 :
             var rest$1 = fmt[2];
             var char_set = fmt[1];
             var width_opt = fmt[0];
@@ -1673,19 +1673,19 @@ function make_scanf(ib, _fmt, readers) {
                     ];
             }
             break;
-        case 21 : 
+        case 21 :
             var count = get_counter(ib, fmt[0]);
             return /* Cons */[
                     count,
                     make_scanf(ib, fmt[1], readers)
                   ];
-        case 22 : 
+        case 22 :
             var c$6 = checked_peek_char(ib);
             return /* Cons */[
                     c$6,
                     make_scanf(ib, fmt[0], readers)
                   ];
-        case 23 : 
+        case 23 :
             var match$7 = CamlinternalFormat.param_format_of_ignored_format(fmt[0], fmt[1]);
             var match$8 = make_scanf(ib, match$7[0], readers);
             if (match$8) {
@@ -1700,12 +1700,12 @@ function make_scanf(ib, _fmt, readers) {
                     ]
                   ];
             }
-        case 24 : 
+        case 24 :
             throw [
                   Caml_builtin_exceptions.invalid_argument,
                   "scanf: bad conversion \"%?\" (custom converter)"
                 ];
-        
+
       }
     }
   };
@@ -1932,6 +1932,6 @@ export {
   sscanf_format ,
   format_from_string ,
   unescaped ,
-  
+
 }
 /* stdin Not a pure module */

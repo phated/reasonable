@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function caml_array_sub(x, offset, len) {
   var result = new Array(len);
@@ -124,6 +124,6 @@ export {
   caml_array_blit ,
   caml_array_get ,
   caml_array_set ,
-  
+
 }
 /* No side effect */

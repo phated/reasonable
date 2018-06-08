@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_Array from "./belt_Array.js";
-import * as Belt_internalBucketsType from "./belt_internalBucketsType.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_Array from "stdlib/belt_Array.js";
+import * as Belt_internalBucketsType from "stdlib/belt_internalBucketsType.js";
 
 function copyAuxCont(_c, _prec) {
   while(true) {
@@ -200,7 +200,7 @@ function keepMapInPlaceU(h, f) {
     if (v !== undefined) {
       filterMapInplaceBucket(f, h, i, Belt_internalBucketsType.emptyOpt, v);
     }
-    
+
   }
   return /* () */0;
 }
@@ -253,7 +253,7 @@ function linear(h, f) {
     if (cell !== undefined) {
       current = fillArrayMap(current, arr, cell, f);
     }
-    
+
   }
   return arr;
 }
@@ -296,6 +296,6 @@ export {
   valuesToArray ,
   toArray ,
   getBucketHistogram ,
-  
+
 }
 /* No side effect */

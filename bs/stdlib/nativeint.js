@@ -1,7 +1,7 @@
 
 
-import * as Caml_format from "./caml_format.js";
-import * as Caml_primitive from "./caml_primitive.js";
+import * as Caml_format from "stdlib/caml_format.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
 
 function succ(n) {
   return n + 1;
@@ -54,6 +54,6 @@ export {
   lognot ,
   to_string ,
   compare ,
-  
+
 }
 /* No side effect */

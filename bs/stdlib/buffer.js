@@ -1,11 +1,11 @@
 
 
-import * as Bytes from "./bytes.js";
-import * as Curry from "./curry.js";
-import * as $$String from "./string.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$String from "stdlib/string.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function create(n) {
   var n$1 = n < 1 ? 1 : n;
@@ -240,7 +240,7 @@ function advance_to_non_alpha(s, start) {
         _i = i + 1 | 0;
         continue ;
       }
-      
+
     }
   };
 }
@@ -268,7 +268,7 @@ function find_ident(s, start, lim) {
               stop$1 + 1 | 0
             ];
     }
-    
+
   }
 }
 
@@ -338,6 +338,6 @@ export {
   add_buffer ,
   add_channel ,
   output_buffer ,
-  
+
 }
 /* No side effect */

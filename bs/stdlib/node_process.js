@@ -1,6 +1,6 @@
 
 
-import * as Js_dict from "./js_dict.js";
+import * as Js_dict from "stdlib/js_dict.js";
 import * as Process from "process";
 
 function putEnvVar(key, $$var) {
@@ -15,6 +15,6 @@ function deleteEnvVar(s) {
 export {
   putEnvVar ,
   deleteEnvVar ,
-  
+
 }
 /* Js_dict Not a pure module */

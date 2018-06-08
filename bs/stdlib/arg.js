@@ -1,22 +1,22 @@
 
 
-import * as Sys from "./sys.js";
-import * as List from "./list.js";
-import * as Block from "./block.js";
-import * as Bytes from "./bytes.js";
-import * as Curry from "./curry.js";
-import * as $$Buffer from "./buffer.js";
-import * as Js_exn from "./js_exn.js";
-import * as Printf from "./printf.js";
-import * as $$String from "./string.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_array from "./caml_array.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_format from "./caml_format.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Sys from "stdlib/sys.js";
+import * as List from "stdlib/list.js";
+import * as Block from "stdlib/block.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Curry from "stdlib/curry.js";
+import * as $$Buffer from "stdlib/buffer.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Printf from "stdlib/printf.js";
+import * as $$String from "stdlib/string.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_format from "stdlib/caml_format.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var Bad = Caml_exceptions.create("Arg.Bad");
 
@@ -194,11 +194,11 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
   var stop = function (error) {
     var progname = initpos < l ? Caml_array.caml_array_get(argv, initpos) : "(?)";
     switch (error.tag | 0) {
-      case 0 : 
+      case 0 :
           var s = error[0];
           switch (s) {
-            case "--help" : 
-            case "-help" : 
+            case "--help" :
+            case "-help" :
                 break;
             default:
               Curry._2(Printf.bprintf(b, /* Format */[
@@ -219,7 +219,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                       ]), progname, s);
           }
           break;
-      case 1 : 
+      case 1 :
           Curry._4(Printf.bprintf(b, /* Format */[
                     /* String */Block.__(2, [
                         /* No_padding */0,
@@ -249,7 +249,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                     "%s: wrong argument '%s'; option '%s' expects %s.\n"
                   ]), progname, error[1], error[0], error[2]);
           break;
-      case 2 : 
+      case 2 :
           Curry._2(Printf.bprintf(b, /* Format */[
                     /* String */Block.__(2, [
                         /* No_padding */0,
@@ -267,7 +267,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                     "%s: option '%s' needs an argument.\n"
                   ]), progname, error[0]);
           break;
-      case 3 : 
+      case 3 :
           Curry._2(Printf.bprintf(b, /* Format */[
                     /* String */Block.__(2, [
                         /* No_padding */0,
@@ -285,7 +285,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                     "%s: %s.\n"
                   ]), progname, error[0]);
           break;
-      
+
     }
     usage_b(b, speclist[0], errmsg);
     if (Caml_obj.caml_equal(error, /* Unknown */Block.__(0, ["-help"])) || Caml_obj.caml_equal(error, /* Unknown */Block.__(0, ["--help"]))) {
@@ -319,9 +319,9 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
         var treat_action = (function(s){
         return function treat_action(param) {
           switch (param.tag | 0) {
-            case 0 : 
+            case 0 :
                 return Curry._1(param[0], /* () */0);
-            case 1 : 
+            case 1 :
                 if ((current$1[0] + 1 | 0) < l) {
                   var arg = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
                   try {
@@ -354,13 +354,13 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 2 : 
+            case 2 :
                 param[0][0] = true;
                 return /* () */0;
-            case 3 : 
+            case 3 :
                 param[0][0] = false;
                 return /* () */0;
-            case 4 : 
+            case 4 :
                 if ((current$1[0] + 1 | 0) < l) {
                   Curry._1(param[0], Caml_array.caml_array_get(argv, current$1[0] + 1 | 0));
                   current$1[0] = current$1[0] + 1 | 0;
@@ -371,7 +371,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 5 : 
+            case 5 :
                 if ((current$1[0] + 1 | 0) < l) {
                   param[0][0] = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
                   current$1[0] = current$1[0] + 1 | 0;
@@ -382,7 +382,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 6 : 
+            case 6 :
                 if ((current$1[0] + 1 | 0) < l) {
                   var arg$1 = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
                   try {
@@ -415,7 +415,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 7 : 
+            case 7 :
                 if ((current$1[0] + 1 | 0) < l) {
                   var arg$2 = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
                   try {
@@ -448,7 +448,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 8 : 
+            case 8 :
                 if ((current$1[0] + 1 | 0) < l) {
                   var arg$3 = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
                   try {
@@ -481,7 +481,7 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 9 : 
+            case 9 :
                 if ((current$1[0] + 1 | 0) < l) {
                   var arg$4 = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
                   try {
@@ -514,9 +514,9 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 10 : 
+            case 10 :
                 return List.iter(treat_action, param[0]);
-            case 11 : 
+            case 11 :
                 if ((current$1[0] + 1 | 0) < l) {
                   var symb = param[0];
                   var arg$5 = Caml_array.caml_array_get(argv, current$1[0] + 1 | 0);
@@ -540,14 +540,14 @@ function parse_argv_dynamic($staropt$star, argv, speclist, anonfun, errmsg) {
                         /* Missing */Block.__(2, [s])
                       ];
                 }
-            case 12 : 
+            case 12 :
                 var f = param[0];
                 while(current$1[0] < (l - 1 | 0)) {
                   Curry._1(f, Caml_array.caml_array_get(argv, current$1[0] + 1 | 0));
                   current$1[0] = current$1[0] + 1 | 0;
                 };
                 return /* () */0;
-            
+
           }
         }
         }(s));
@@ -739,6 +739,6 @@ export {
   usage_string ,
   align ,
   current ,
-  
+
 }
 /* No side effect */

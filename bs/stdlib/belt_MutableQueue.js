@@ -1,6 +1,6 @@
 
 
-import * as Curry from "./curry.js";
+import * as Curry from "stdlib/curry.js";
 
 var $$null = null;
 
@@ -304,6 +304,6 @@ export {
   reduce ,
   transfer ,
   toArray ,
-  
+
 }
 /* No side effect */

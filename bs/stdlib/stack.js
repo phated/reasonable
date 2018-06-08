@@ -1,7 +1,7 @@
 
 
-import * as List from "./list.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
+import * as List from "stdlib/list.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
 
 var Empty = Caml_exceptions.create("Stack.Empty");
 
@@ -68,6 +68,6 @@ export {
   is_empty ,
   length ,
   iter ,
-  
+
 }
 /* No side effect */

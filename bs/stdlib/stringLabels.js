@@ -1,6 +1,6 @@
 
 
-import * as $$String from "./string.js";
+import * as $$String from "stdlib/string.js";
 
 var make = $$String.make;
 
@@ -78,6 +78,6 @@ export {
   capitalize ,
   uncapitalize ,
   compare ,
-  
+
 }
 /* No side effect */

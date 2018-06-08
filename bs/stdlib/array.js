@@ -1,10 +1,10 @@
 
 
-import * as Curry from "./curry.js";
-import * as Js_exn from "./js_exn.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function init(l, f) {
   if (l === 0) {
@@ -418,6 +418,6 @@ export {
   sort ,
   stable_sort ,
   fast_sort ,
-  
+
 }
 /* No side effect */

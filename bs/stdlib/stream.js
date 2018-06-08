@@ -1,14 +1,14 @@
 
 
-import * as List from "./list.js";
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
-import * as Caml_bytes from "./caml_bytes.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as CamlinternalLazy from "./camlinternalLazy.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as List from "stdlib/list.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_bytes from "stdlib/caml_bytes.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as CamlinternalLazy from "stdlib/camlinternalLazy.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var Failure = Caml_exceptions.create("Stream.Failure");
 
@@ -27,9 +27,9 @@ function get_data(count, _d) {
       return d;
     } else {
       switch (d.tag | 0) {
-        case 0 : 
+        case 0 :
             return d;
-        case 1 : 
+        case 1 :
             var d2 = d[1];
             var match = get_data(count, d[0]);
             if (typeof match === "number") {
@@ -53,14 +53,14 @@ function get_data(count, _d) {
                           ])
                       ]);
             }
-        case 2 : 
+        case 2 :
             var f = d[0];
             var tag = f.tag | 0;
             _d = tag === 250 ? f[0] : (
                 tag === 246 ? CamlinternalLazy.force_lazy_block(f) : f
               );
             continue ;
-        case 3 : 
+        case 3 :
             var g = d[0];
             var match$1 = g[/* curr */0];
             if (match$1) {
@@ -86,7 +86,7 @@ function get_data(count, _d) {
                 return /* Sempty */0;
               }
             }
-        case 4 : 
+        case 4 :
             var b = d[0];
             if (b[/* ind */3] >= b[/* len */2]) {
               fill_buff(b);
@@ -101,7 +101,7 @@ function get_data(count, _d) {
                         d
                       ]);
             }
-        
+
       }
     }
   };
@@ -114,9 +114,9 @@ function peek(s) {
       return /* None */0;
     } else {
       switch (match.tag | 0) {
-        case 0 : 
+        case 0 :
             return /* Some */[match[0]];
-        case 1 : 
+        case 1 :
             var d = get_data(s[/* count */0], s[/* data */1]);
             if (typeof d === "number") {
               return /* None */0;
@@ -133,14 +133,14 @@ function peek(s) {
               s[1] = d;
               return /* Some */[d[0]];
             }
-        case 2 : 
+        case 2 :
             var f = match[0];
             var tag = f.tag | 0;
             s[1] = tag === 250 ? f[0] : (
                 tag === 246 ? CamlinternalLazy.force_lazy_block(f) : f
               );
             continue ;
-        case 3 : 
+        case 3 :
             var g = match[0];
             var match$1 = g[/* curr */0];
             if (match$1) {
@@ -150,7 +150,7 @@ function peek(s) {
               g[/* curr */0] = /* Some */[x];
               return x;
             }
-        case 4 : 
+        case 4 :
             var b = match[0];
             if (b[/* ind */3] >= b[/* len */2]) {
               fill_buff(b);
@@ -161,7 +161,7 @@ function peek(s) {
             } else {
               return /* Some */[b[/* buff */1][b[/* ind */3]]];
             }
-        
+
       }
     }
   };
@@ -175,11 +175,11 @@ function junk(s) {
       exit = 1;
     } else {
       switch (match.tag | 0) {
-        case 0 : 
+        case 0 :
             s[0] = s[/* count */0] + 1 | 0;
             s[1] = match[1];
             return /* () */0;
-        case 3 : 
+        case 3 :
             var g = match[0];
             var match$1 = g[/* curr */0];
             if (match$1) {
@@ -190,7 +190,7 @@ function junk(s) {
               exit = 1;
             }
             break;
-        case 4 : 
+        case 4 :
             var b = match[0];
             s[0] = s[/* count */0] + 1 | 0;
             b[/* ind */3] = b[/* ind */3] + 1 | 0;
@@ -207,7 +207,7 @@ function junk(s) {
         return /* () */0;
       }
     }
-    
+
   };
 }
 
@@ -426,25 +426,25 @@ function dump_data(f, param) {
     return Pervasives.print_string("Sempty");
   } else {
     switch (param.tag | 0) {
-      case 0 : 
+      case 0 :
           Pervasives.print_string("Scons (");
           Curry._1(f, param[0]);
           Pervasives.print_string(", ");
           dump_data(f, param[1]);
           return Pervasives.print_string(")");
-      case 1 : 
+      case 1 :
           Pervasives.print_string("Sapp (");
           dump_data(f, param[0]);
           Pervasives.print_string(", ");
           dump_data(f, param[1]);
           return Pervasives.print_string(")");
-      case 2 : 
+      case 2 :
           return Pervasives.print_string("Slazy");
-      case 3 : 
+      case 3 :
           return Pervasives.print_string("Sgen");
-      case 4 : 
+      case 4 :
           return Pervasives.print_string("Sbuffio");
-      
+
     }
   }
 }
@@ -491,6 +491,6 @@ export {
   sempty ,
   slazy ,
   dump ,
-  
+
 }
 /* No side effect */

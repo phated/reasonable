@@ -1,7 +1,7 @@
 
 
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function init_mod(loc, shape) {
   var undef_module = function () {
@@ -13,11 +13,11 @@ function init_mod(loc, shape) {
   var loop = function (shape, struct_, idx) {
     if (typeof shape === "number") {
       switch (shape) {
-        case 0 : 
-        case 1 : 
+        case 0 :
+        case 1 :
             struct_[idx] = undef_module;
             return /* () */0;
-        case 2 : 
+        case 2 :
             struct_[idx] = /* tuple */[
               undef_module,
               undef_module,
@@ -25,7 +25,7 @@ function init_mod(loc, shape) {
               0
             ];
             return /* () */0;
-        
+
       }
     } else if (shape.tag) {
       struct_[idx] = shape[0];
@@ -50,13 +50,13 @@ function update_mod(shape, o, n) {
   var aux = function (shape, o, n, parent, i) {
     if (typeof shape === "number") {
       switch (shape) {
-        case 0 : 
+        case 0 :
             parent[i] = n;
             return /* () */0;
-        case 1 : 
-        case 2 : 
+        case 1 :
+        case 2 :
             return Caml_obj.caml_update_dummy(o, n);
-        
+
       }
     } else if (shape.tag) {
       return /* () */0;
@@ -98,6 +98,6 @@ function update_mod(shape, o, n) {
 export {
   init_mod ,
   update_mod ,
-  
+
 }
 /* No side effect */

@@ -1,7 +1,7 @@
 
 
-import * as Caml_sys from "./caml_sys.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
+import * as Caml_sys from "stdlib/caml_sys.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
 
 var is_js = true;
 
@@ -121,6 +121,6 @@ export {
   Break ,
   catch_break ,
   ocaml_version ,
-  
+
 }
 /* No side effect */

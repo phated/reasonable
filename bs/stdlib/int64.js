@@ -1,7 +1,7 @@
 
 
-import * as Caml_int64 from "./caml_int64.js";
-import * as Caml_format from "./caml_format.js";
+import * as Caml_int64 from "stdlib/caml_int64.js";
+import * as Caml_format from "stdlib/caml_format.js";
 
 function succ(n) {
   return Caml_int64.add(n, /* int64 */[
@@ -78,6 +78,6 @@ export {
   lognot ,
   to_string ,
   compare ,
-  
+
 }
 /* No side effect */

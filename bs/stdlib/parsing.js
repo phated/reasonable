@@ -1,13 +1,13 @@
 
 
-import * as $$Array from "./array.js";
-import * as Curry from "./curry.js";
-import * as Js_exn from "./js_exn.js";
-import * as Lexing from "./lexing.js";
-import * as Caml_obj from "./caml_obj.js";
-import * as Caml_array from "./caml_array.js";
-import * as Caml_parser from "./caml_parser.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
+import * as $$Array from "stdlib/array.js";
+import * as Curry from "stdlib/curry.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Lexing from "stdlib/lexing.js";
+import * as Caml_obj from "stdlib/caml_obj.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Caml_parser from "stdlib/caml_parser.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
 
 var YYexit = Caml_exceptions.create("Parsing.YYexit");
 
@@ -80,26 +80,26 @@ function yyparse(tables, start, lexer, lexbuf) {
       var cmd = _cmd;
       var match = Caml_parser.caml_parse_engine(tables, env, cmd, arg);
       switch (match) {
-        case 0 : 
+        case 0 :
             var t = Curry._1(lexer, lexbuf);
             env[/* symb_start */8] = lexbuf[/* lex_start_p */10];
             env[/* symb_end */9] = lexbuf[/* lex_curr_p */11];
             _arg = t;
             _cmd = /* Token_read */1;
             continue ;
-        case 1 : 
+        case 1 :
             throw Parse_error;
-        case 2 : 
+        case 2 :
             grow_stacks(/* () */0);
             _arg = /* () */0;
             _cmd = /* Stacks_grown_1 */2;
             continue ;
-        case 3 : 
+        case 3 :
             grow_stacks(/* () */0);
             _arg = /* () */0;
             _cmd = /* Stacks_grown_2 */3;
             continue ;
-        case 4 : 
+        case 4 :
             var match$1;
             try {
               match$1 = /* tuple */[
@@ -120,12 +120,12 @@ function yyparse(tables, start, lexer, lexbuf) {
             _arg = match$1[1];
             _cmd = match$1[0];
             continue ;
-        case 5 : 
+        case 5 :
             Curry._1(tables[/* error_function */13], "syntax error");
             _arg = /* () */0;
             _cmd = /* Error_detected */5;
             continue ;
-        
+
       }
     };
   }
@@ -232,6 +232,6 @@ export {
   peek_val ,
   is_current_lookahead ,
   parse_error ,
-  
+
 }
 /* No side effect */

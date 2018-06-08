@@ -1,8 +1,8 @@
 
 
-import * as Block from "./block.js";
-import * as Caml_primitive from "./caml_primitive.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Block from "stdlib/block.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function caml_obj_block(tag, size) {
   var v = new Array(size);
@@ -432,6 +432,6 @@ export {
   caml_lessequal ,
   caml_min ,
   caml_max ,
-  
+
 }
 /* No side effect */

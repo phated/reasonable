@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_MapDict from "./belt_MapDict.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_MapDict from "stdlib/belt_MapDict.js";
 
 function fromArray(data, id) {
   var cmp = id[/* cmp */0];
@@ -361,6 +361,6 @@ export {
   getId ,
   packIdData ,
   checkInvariantInternal ,
-  
+
 }
 /* No side effect */

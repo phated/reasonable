@@ -1,7 +1,7 @@
 
 
-import * as Belt_internalSetBuckets from "./belt_internalSetBuckets.js";
-import * as Belt_internalBucketsType from "./belt_internalBucketsType.js";
+import * as Belt_internalSetBuckets from "stdlib/belt_internalSetBuckets.js";
+import * as Belt_internalBucketsType from "stdlib/belt_internalBucketsType.js";
 
 function copyBucket(hash, h_buckets, ndata_tail, _old_bucket) {
   while(true) {
@@ -118,7 +118,7 @@ function add0(h, key, hash, eq) {
         if (match !== undefined) {
           match.next = Belt_internalBucketsType.emptyOpt;
         }
-        
+
       }
       return /* () */0;
     } else {
@@ -234,6 +234,6 @@ export {
   fromArray ,
   mergeMany ,
   getBucketHistogram ,
-  
+
 }
 /* No side effect */

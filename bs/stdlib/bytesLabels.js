@@ -1,6 +1,6 @@
 
 
-import * as Bytes from "./bytes.js";
+import * as Bytes from "stdlib/bytes.js";
 
 var make = Bytes.make;
 
@@ -96,6 +96,6 @@ export {
   compare ,
   unsafe_to_string ,
   unsafe_of_string ,
-  
+
 }
 /* No side effect */

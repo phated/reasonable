@@ -1,15 +1,15 @@
 
 
-import * as Char from "./char.js";
-import * as List from "./list.js";
-import * as Block from "./block.js";
-import * as Bytes from "./bytes.js";
-import * as Stream from "./stream.js";
-import * as Hashtbl from "./hashtbl.js";
-import * as Caml_int32 from "./caml_int32.js";
-import * as Caml_format from "./caml_format.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Char from "stdlib/char.js";
+import * as List from "stdlib/list.js";
+import * as Block from "stdlib/block.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Stream from "stdlib/stream.js";
+import * as Hashtbl from "stdlib/hashtbl.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Caml_format from "stdlib/caml_format.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var initial_buffer = Caml_string.caml_create_string(32);
 
@@ -86,19 +86,19 @@ function make_lexer(keywords) {
               exit = 1;
             } else {
               switch (switcher + 65 | 0) {
-                case 9 : 
-                case 10 : 
-                case 12 : 
-                case 13 : 
-                case 26 : 
-                case 32 : 
+                case 9 :
+                case 10 :
+                case 12 :
+                case 13 :
+                case 26 :
+                case 32 :
                     Stream.junk(strm__);
                     continue ;
-                case 34 : 
+                case 34 :
                     Stream.junk(strm__);
                     reset_buffer(/* () */0);
                     return /* Some */[/* String */Block.__(4, [string(strm__)])];
-                case 39 : 
+                case 39 :
                     Stream.junk(strm__);
                     var c$1;
                     try {
@@ -131,7 +131,7 @@ function make_lexer(keywords) {
                             ""
                           ];
                     }
-                case 40 : 
+                case 40 :
                     Stream.junk(strm__);
                     var strm__$1 = strm__;
                     var match$2 = Stream.peek(strm__$1);
@@ -146,7 +146,7 @@ function make_lexer(keywords) {
                     } else {
                       return /* Some */[keyword_or_error(/* "(" */40)];
                     }
-                case 45 : 
+                case 45 :
                     Stream.junk(strm__);
                     var strm__$2 = strm__;
                     var match$3 = Stream.peek(strm__$2);
@@ -168,68 +168,68 @@ function make_lexer(keywords) {
                       store(/* "-" */45);
                       return ident2(strm__$2);
                     }
-                case 48 : 
-                case 49 : 
-                case 50 : 
-                case 51 : 
-                case 52 : 
-                case 53 : 
-                case 54 : 
-                case 55 : 
-                case 56 : 
-                case 57 : 
+                case 48 :
+                case 49 :
+                case 50 :
+                case 51 :
+                case 52 :
+                case 53 :
+                case 54 :
+                case 55 :
+                case 56 :
+                case 57 :
                     exit = 4;
                     break;
-                case 0 : 
-                case 1 : 
-                case 2 : 
-                case 3 : 
-                case 4 : 
-                case 5 : 
-                case 6 : 
-                case 7 : 
-                case 8 : 
-                case 11 : 
-                case 14 : 
-                case 15 : 
-                case 16 : 
-                case 17 : 
-                case 18 : 
-                case 19 : 
-                case 20 : 
-                case 21 : 
-                case 22 : 
-                case 23 : 
-                case 24 : 
-                case 25 : 
-                case 27 : 
-                case 28 : 
-                case 29 : 
-                case 30 : 
-                case 31 : 
-                case 41 : 
-                case 44 : 
-                case 46 : 
-                case 59 : 
+                case 0 :
+                case 1 :
+                case 2 :
+                case 3 :
+                case 4 :
+                case 5 :
+                case 6 :
+                case 7 :
+                case 8 :
+                case 11 :
+                case 14 :
+                case 15 :
+                case 16 :
+                case 17 :
+                case 18 :
+                case 19 :
+                case 20 :
+                case 21 :
+                case 22 :
+                case 23 :
+                case 24 :
+                case 25 :
+                case 27 :
+                case 28 :
+                case 29 :
+                case 30 :
+                case 31 :
+                case 41 :
+                case 44 :
+                case 46 :
+                case 59 :
                     exit = 1;
                     break;
-                case 33 : 
-                case 35 : 
-                case 36 : 
-                case 37 : 
-                case 38 : 
-                case 42 : 
-                case 43 : 
-                case 47 : 
-                case 58 : 
-                case 60 : 
-                case 61 : 
-                case 62 : 
-                case 63 : 
-                case 64 : 
+                case 33 :
+                case 35 :
+                case 36 :
+                case 37 :
+                case 38 :
+                case 42 :
+                case 43 :
+                case 47 :
+                case 58 :
+                case 60 :
+                case 61 :
+                case 62 :
+                case 63 :
+                case 64 :
                     exit = 3;
                     break;
-                
+
               }
             }
           } else {
@@ -238,19 +238,19 @@ function make_lexer(keywords) {
               exit = 2;
             } else {
               switch (switcher$1) {
-                case 1 : 
-                case 3 : 
+                case 1 :
+                case 3 :
                     exit = 3;
                     break;
-                case 4 : 
+                case 4 :
                     exit = 2;
                     break;
-                case 0 : 
-                case 2 : 
-                case 5 : 
+                case 0 :
+                case 2 :
+                case 5 :
                     exit = 1;
                     break;
-                
+
               }
             }
           }
@@ -262,10 +262,10 @@ function make_lexer(keywords) {
             );
         }
         switch (exit) {
-          case 1 : 
+          case 1 :
               Stream.junk(strm__);
               return /* Some */[keyword_or_error(c)];
-          case 2 : 
+          case 2 :
               Stream.junk(strm__);
               reset_buffer(/* () */0);
               store(c);
@@ -304,22 +304,22 @@ function make_lexer(keywords) {
                     store(c$3);
                     continue ;
                   }
-                  
+
                 } else {
                   return /* Some */[ident_or_keyword(get_string(/* () */0))];
                 }
               };
-          case 3 : 
+          case 3 :
               Stream.junk(strm__);
               reset_buffer(/* () */0);
               store(c);
               return ident2(strm__);
-          case 4 : 
+          case 4 :
               Stream.junk(strm__);
               reset_buffer(/* () */0);
               store(c);
               return number(strm__);
-          
+
         }
       } else {
         return /* None */0;
@@ -353,42 +353,42 @@ function make_lexer(keywords) {
           }
         } else if (c >= 33) {
           switch (c - 33 | 0) {
-            case 1 : 
-            case 6 : 
-            case 7 : 
-            case 8 : 
-            case 11 : 
-            case 13 : 
-            case 15 : 
-            case 16 : 
-            case 17 : 
-            case 18 : 
-            case 19 : 
-            case 20 : 
-            case 21 : 
-            case 22 : 
-            case 23 : 
-            case 24 : 
-            case 26 : 
+            case 1 :
+            case 6 :
+            case 7 :
+            case 8 :
+            case 11 :
+            case 13 :
+            case 15 :
+            case 16 :
+            case 17 :
+            case 18 :
+            case 19 :
+            case 20 :
+            case 21 :
+            case 22 :
+            case 23 :
+            case 24 :
+            case 26 :
                 return /* Some */[ident_or_keyword(get_string(/* () */0))];
-            case 0 : 
-            case 2 : 
-            case 3 : 
-            case 4 : 
-            case 5 : 
-            case 9 : 
-            case 10 : 
-            case 12 : 
-            case 14 : 
-            case 25 : 
-            case 27 : 
-            case 28 : 
-            case 29 : 
-            case 30 : 
-            case 31 : 
+            case 0 :
+            case 2 :
+            case 3 :
+            case 4 :
+            case 5 :
+            case 9 :
+            case 10 :
+            case 12 :
+            case 14 :
+            case 25 :
+            case 27 :
+            case 28 :
+            case 29 :
+            case 30 :
+            case 31 :
                 exit = 1;
                 break;
-            
+
           }
         } else {
           return /* Some */[ident_or_keyword(get_string(/* () */0))];
@@ -398,7 +398,7 @@ function make_lexer(keywords) {
           store(c);
           continue ;
         }
-        
+
       } else {
         return /* Some */[ident_or_keyword(get_string(/* () */0))];
       }
@@ -463,7 +463,7 @@ function make_lexer(keywords) {
             if (exit$1 === 1) {
               return /* Some */[/* Float */Block.__(3, [Caml_format.caml_float_of_string(get_string(/* () */0))])];
             }
-            
+
           };
         }
       } else {
@@ -472,7 +472,7 @@ function make_lexer(keywords) {
       if (exit === 1) {
         return /* Some */[/* Int */Block.__(2, [Caml_format.caml_int_of_string(get_string(/* () */0))])];
       }
-      
+
     };
   };
   var exponent_part = function (strm__) {
@@ -580,22 +580,22 @@ function make_lexer(keywords) {
           return c1;
         } else {
           switch (switcher) {
-            case 0 : 
+            case 0 :
                 Stream.junk(strm__);
                 return /* "\n" */10;
-            case 4 : 
+            case 4 :
                 Stream.junk(strm__);
                 return /* "\r" */13;
-            case 1 : 
-            case 2 : 
-            case 3 : 
-            case 5 : 
+            case 1 :
+            case 2 :
+            case 3 :
+            case 5 :
                 Stream.junk(strm__);
                 return c1;
-            case 6 : 
+            case 6 :
                 Stream.junk(strm__);
                 return /* "\t" */9;
-            
+
           }
         }
       } else {
@@ -654,7 +654,7 @@ function make_lexer(keywords) {
           continue ;
         } else {
           switch (switcher) {
-            case 0 : 
+            case 0 :
                 Stream.junk(strm__);
                 var strm__$1 = strm__;
                 var match$1 = Stream.peek(strm__$1);
@@ -670,10 +670,10 @@ function make_lexer(keywords) {
                 } else {
                   throw Stream.Failure;
                 }
-            case 1 : 
+            case 1 :
                 Stream.junk(strm__);
                 continue ;
-            case 2 : 
+            case 2 :
                 Stream.junk(strm__);
                 var strm__$2 = strm__;
                 while(true) {
@@ -694,7 +694,7 @@ function make_lexer(keywords) {
                     throw Stream.Failure;
                   }
                 };
-            
+
           }
         }
       } else {
@@ -711,6 +711,6 @@ function make_lexer(keywords) {
 
 export {
   make_lexer ,
-  
+
 }
 /* No side effect */

@@ -1,8 +1,8 @@
 
 
-import * as Obj from "./obj.js";
-import * as Curry from "./curry.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
+import * as Obj from "stdlib/obj.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
 
 var Undefined = Caml_exceptions.create("CamlinternalLazy.Undefined");
 
@@ -64,6 +64,6 @@ export {
   force_val_lazy_block ,
   force ,
   force_val ,
-  
+
 }
 /* No side effect */

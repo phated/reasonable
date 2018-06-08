@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_SetDict from "./belt_SetDict.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_SetDict from "stdlib/belt_SetDict.js";
 
 function fromArray(data, id) {
   var cmp = id[/* cmp */0];
@@ -308,6 +308,6 @@ export {
   getData ,
   getId ,
   packIdData ,
-  
+
 }
 /* No side effect */

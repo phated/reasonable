@@ -1,6 +1,6 @@
 
 
-import * as Caml_exceptions from "./caml_exceptions.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
 
 var $$Error = Caml_exceptions.create("Js_exn.Error");
 
@@ -53,6 +53,6 @@ export {
   raiseSyntaxError ,
   raiseTypeError ,
   raiseUriError ,
-  
+
 }
 /* No side effect */

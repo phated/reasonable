@@ -1,24 +1,24 @@
 
 
-import * as Sys from "./sys.js";
-import * as List from "./list.js";
-import * as $$Array from "./array.js";
-import * as Block from "./block.js";
-import * as Curry from "./curry.js";
-import * as Js_exn from "./js_exn.js";
-import * as Printf from "./printf.js";
-import * as Caml_io from "./caml_io.js";
-import * as Hashtbl from "./hashtbl.js";
-import * as Callback from "./callback.js";
-import * as Caml_sys from "./caml_sys.js";
-import * as Printexc from "./printexc.js";
-import * as Caml_array from "./caml_array.js";
-import * as Pervasives from "./pervasives.js";
-import * as Caml_format from "./caml_format.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_exceptions from "./caml_exceptions.js";
-import * as Caml_missing_polyfill from "./caml_missing_polyfill.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Sys from "stdlib/sys.js";
+import * as List from "stdlib/list.js";
+import * as $$Array from "stdlib/array.js";
+import * as Block from "stdlib/block.js";
+import * as Curry from "stdlib/curry.js";
+import * as Js_exn from "stdlib/js_exn.js";
+import * as Printf from "stdlib/printf.js";
+import * as Caml_io from "stdlib/caml_io.js";
+import * as Hashtbl from "stdlib/hashtbl.js";
+import * as Callback from "stdlib/callback.js";
+import * as Caml_sys from "stdlib/caml_sys.js";
+import * as Printexc from "stdlib/printexc.js";
+import * as Caml_array from "stdlib/caml_array.js";
+import * as Pervasives from "stdlib/pervasives.js";
+import * as Caml_format from "stdlib/caml_format.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_exceptions from "stdlib/caml_exceptions.js";
+import * as Caml_missing_polyfill from "stdlib/caml_missing_polyfill.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 var Unix_error = Caml_exceptions.create("Unix.Unix_error");
 
@@ -35,211 +35,211 @@ Printexc.register_printer((function (param) {
           var msg;
           if (typeof e === "number") {
             switch (e) {
-              case 0 : 
+              case 0 :
                   msg = "E2BIG";
                   break;
-              case 1 : 
+              case 1 :
                   msg = "EACCES";
                   break;
-              case 2 : 
+              case 2 :
                   msg = "EAGAIN";
                   break;
-              case 3 : 
+              case 3 :
                   msg = "EBADF";
                   break;
-              case 4 : 
+              case 4 :
                   msg = "EBUSY";
                   break;
-              case 5 : 
+              case 5 :
                   msg = "ECHILD";
                   break;
-              case 6 : 
+              case 6 :
                   msg = "EDEADLK";
                   break;
-              case 7 : 
+              case 7 :
                   msg = "EDOM";
                   break;
-              case 8 : 
+              case 8 :
                   msg = "EEXIST";
                   break;
-              case 9 : 
+              case 9 :
                   msg = "EFAULT";
                   break;
-              case 10 : 
+              case 10 :
                   msg = "EFBIG";
                   break;
-              case 11 : 
+              case 11 :
                   msg = "EINTR";
                   break;
-              case 12 : 
+              case 12 :
                   msg = "EINVAL";
                   break;
-              case 13 : 
+              case 13 :
                   msg = "EIO";
                   break;
-              case 14 : 
+              case 14 :
                   msg = "EISDIR";
                   break;
-              case 15 : 
+              case 15 :
                   msg = "EMFILE";
                   break;
-              case 16 : 
+              case 16 :
                   msg = "EMLINK";
                   break;
-              case 17 : 
+              case 17 :
                   msg = "ENAMETOOLONG";
                   break;
-              case 18 : 
+              case 18 :
                   msg = "ENFILE";
                   break;
-              case 19 : 
+              case 19 :
                   msg = "ENODEV";
                   break;
-              case 20 : 
+              case 20 :
                   msg = "ENOENT";
                   break;
-              case 21 : 
+              case 21 :
                   msg = "ENOEXEC";
                   break;
-              case 22 : 
+              case 22 :
                   msg = "ENOLCK";
                   break;
-              case 23 : 
+              case 23 :
                   msg = "ENOMEM";
                   break;
-              case 24 : 
+              case 24 :
                   msg = "ENOSPC";
                   break;
-              case 25 : 
+              case 25 :
                   msg = "ENOSYS";
                   break;
-              case 26 : 
+              case 26 :
                   msg = "ENOTDIR";
                   break;
-              case 27 : 
+              case 27 :
                   msg = "ENOTEMPTY";
                   break;
-              case 28 : 
+              case 28 :
                   msg = "ENOTTY";
                   break;
-              case 29 : 
+              case 29 :
                   msg = "ENXIO";
                   break;
-              case 30 : 
+              case 30 :
                   msg = "EPERM";
                   break;
-              case 31 : 
+              case 31 :
                   msg = "EPIPE";
                   break;
-              case 32 : 
+              case 32 :
                   msg = "ERANGE";
                   break;
-              case 33 : 
+              case 33 :
                   msg = "EROFS";
                   break;
-              case 34 : 
+              case 34 :
                   msg = "ESPIPE";
                   break;
-              case 35 : 
+              case 35 :
                   msg = "ESRCH";
                   break;
-              case 36 : 
+              case 36 :
                   msg = "EXDEV";
                   break;
-              case 37 : 
+              case 37 :
                   msg = "EWOULDBLOCK";
                   break;
-              case 38 : 
+              case 38 :
                   msg = "EINPROGRESS";
                   break;
-              case 39 : 
+              case 39 :
                   msg = "EALREADY";
                   break;
-              case 40 : 
+              case 40 :
                   msg = "ENOTSOCK";
                   break;
-              case 41 : 
+              case 41 :
                   msg = "EDESTADDRREQ";
                   break;
-              case 42 : 
+              case 42 :
                   msg = "EMSGSIZE";
                   break;
-              case 43 : 
+              case 43 :
                   msg = "EPROTOTYPE";
                   break;
-              case 44 : 
+              case 44 :
                   msg = "ENOPROTOOPT";
                   break;
-              case 45 : 
+              case 45 :
                   msg = "EPROTONOSUPPORT";
                   break;
-              case 46 : 
+              case 46 :
                   msg = "ESOCKTNOSUPPORT";
                   break;
-              case 47 : 
+              case 47 :
                   msg = "EOPNOTSUPP";
                   break;
-              case 48 : 
+              case 48 :
                   msg = "EPFNOSUPPORT";
                   break;
-              case 49 : 
+              case 49 :
                   msg = "EAFNOSUPPORT";
                   break;
-              case 50 : 
+              case 50 :
                   msg = "EADDRINUSE";
                   break;
-              case 51 : 
+              case 51 :
                   msg = "EADDRNOTAVAIL";
                   break;
-              case 52 : 
+              case 52 :
                   msg = "ENETDOWN";
                   break;
-              case 53 : 
+              case 53 :
                   msg = "ENETUNREACH";
                   break;
-              case 54 : 
+              case 54 :
                   msg = "ENETRESET";
                   break;
-              case 55 : 
+              case 55 :
                   msg = "ECONNABORTED";
                   break;
-              case 56 : 
+              case 56 :
                   msg = "ECONNRESET";
                   break;
-              case 57 : 
+              case 57 :
                   msg = "ENOBUFS";
                   break;
-              case 58 : 
+              case 58 :
                   msg = "EISCONN";
                   break;
-              case 59 : 
+              case 59 :
                   msg = "ENOTCONN";
                   break;
-              case 60 : 
+              case 60 :
                   msg = "ESHUTDOWN";
                   break;
-              case 61 : 
+              case 61 :
                   msg = "ETOOMANYREFS";
                   break;
-              case 62 : 
+              case 62 :
                   msg = "ETIMEDOUT";
                   break;
-              case 63 : 
+              case 63 :
                   msg = "ECONNREFUSED";
                   break;
-              case 64 : 
+              case 64 :
                   msg = "EHOSTDOWN";
                   break;
-              case 65 : 
+              case 65 :
                   msg = "EHOSTUNREACH";
                   break;
-              case 66 : 
+              case 66 :
                   msg = "ELOOP";
                   break;
-              case 67 : 
+              case 67 :
                   msg = "EOVERFLOW";
                   break;
-              
+
             }
           } else {
             msg = Curry._1(Printf.sprintf(/* Format */[
@@ -534,10 +534,10 @@ function getaddrinfo(node, service, opts) {
                 }
               } else {
                 switch (param.tag | 0) {
-                  case 1 : 
+                  case 1 :
                       opt_socktype[0] = /* Some */[param[0]];
                       return /* () */0;
-                  case 2 : 
+                  case 2 :
                       opt_protocol[0] = param[0];
                       return /* () */0;
                   default:
@@ -1114,7 +1114,7 @@ function close_process(param) {
     if (exn[0] !== Caml_builtin_exceptions.sys_error) {
       throw exn;
     }
-    
+
   }
   return waitpid_non_intr(pid)[1];
 }
@@ -1138,7 +1138,7 @@ function close_process_full(param) {
     if (exn[0] !== Caml_builtin_exceptions.sys_error) {
       throw exn;
     }
-    
+
   }
   Caml_missing_polyfill.not_implemented("caml_ml_close_channel");
   return waitpid_non_intr(pid)[1];
@@ -1853,6 +1853,6 @@ export {
   tcflush ,
   tcflow ,
   setsid ,
-  
+
 }
 /*  Not a pure module */

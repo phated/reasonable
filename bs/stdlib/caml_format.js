@@ -1,10 +1,10 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_int32 from "./caml_int32.js";
-import * as Caml_int64 from "./caml_int64.js";
-import * as Caml_utils from "./caml_utils.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Caml_int64 from "stdlib/caml_int64.js";
+import * as Caml_utils from "stdlib/caml_utils.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function caml_failwith(s) {
   throw [
@@ -35,15 +35,15 @@ function parse_digit(c) {
 
 function int_of_string_base(param) {
   switch (param) {
-    case 0 : 
+    case 0 :
         return 8;
-    case 1 : 
+    case 1 :
         return 16;
-    case 2 : 
+    case 2 :
         return 10;
-    case 3 : 
+    case 3 :
         return 2;
-    
+
   }
 }
 
@@ -65,7 +65,7 @@ function parse_sign_and_base(s) {
             base = /* Hex */1;
             i = i + 2 | 0;
           }
-          
+
         } else {
           base = /* Oct */0;
           i = i + 2 | 0;
@@ -80,7 +80,7 @@ function parse_sign_and_base(s) {
           base = /* Hex */1;
           i = i + 2 | 0;
         }
-        
+
       } else {
         base = /* Oct */0;
         i = i + 2 | 0;
@@ -165,31 +165,31 @@ function caml_int64_of_string(s) {
   var sign = Caml_int64.of_int32(match[1]);
   var threshold;
   switch (hbase) {
-    case 0 : 
+    case 0 :
         threshold = /* int64 */[
           /* hi */536870911,
           /* lo */4294967295
         ];
         break;
-    case 1 : 
+    case 1 :
         threshold = /* int64 */[
           /* hi */268435455,
           /* lo */4294967295
         ];
         break;
-    case 2 : 
+    case 2 :
         threshold = /* int64 */[
           /* hi */429496729,
           /* lo */2576980377
         ];
         break;
-    case 3 : 
+    case 3 :
         threshold = /* int64 */[
           /* hi */2147483647,
           /* lo */4294967295
         ];
         break;
-    
+
   }
   var len = s.length;
   var c = i < len ? s.charCodeAt(i) : /* "\000" */0;
@@ -253,13 +253,13 @@ function caml_int64_of_string(s) {
 
 function int_of_base(param) {
   switch (param) {
-    case 0 : 
+    case 0 :
         return 8;
-    case 1 : 
+    case 1 :
         return 16;
-    case 2 : 
+    case 2 :
         return 10;
-    
+
   }
 }
 
@@ -306,59 +306,59 @@ function parse_format(fmt) {
             exit = 1;
           } else {
             switch (c - 88 | 0) {
-              case 0 : 
+              case 0 :
                   f[/* base */4] = /* Hex */1;
                   f[/* uppercase */7] = true;
                   _i = i + 1 | 0;
                   continue ;
-              case 13 : 
-              case 14 : 
-              case 15 : 
+              case 13 :
+              case 14 :
+              case 15 :
                   exit = 5;
                   break;
-              case 12 : 
-              case 17 : 
+              case 12 :
+              case 17 :
                   exit = 4;
                   break;
-              case 23 : 
+              case 23 :
                   f[/* base */4] = /* Oct */0;
                   _i = i + 1 | 0;
                   continue ;
-              case 29 : 
+              case 29 :
                   f[/* base */4] = /* Dec */2;
                   _i = i + 1 | 0;
                   continue ;
-              case 1 : 
-              case 2 : 
-              case 3 : 
-              case 4 : 
-              case 5 : 
-              case 6 : 
-              case 7 : 
-              case 8 : 
-              case 9 : 
-              case 10 : 
-              case 11 : 
-              case 16 : 
-              case 18 : 
-              case 19 : 
-              case 20 : 
-              case 21 : 
-              case 22 : 
-              case 24 : 
-              case 25 : 
-              case 26 : 
-              case 27 : 
-              case 28 : 
-              case 30 : 
-              case 31 : 
+              case 1 :
+              case 2 :
+              case 3 :
+              case 4 :
+              case 5 :
+              case 6 :
+              case 7 :
+              case 8 :
+              case 9 :
+              case 10 :
+              case 11 :
+              case 16 :
+              case 18 :
+              case 19 :
+              case 20 :
+              case 21 :
+              case 22 :
+              case 24 :
+              case 25 :
+              case 26 :
+              case 27 :
+              case 28 :
+              case 30 :
+              case 31 :
                   exit = 1;
                   break;
-              case 32 : 
+              case 32 :
                   f[/* base */4] = /* Hex */1;
                   _i = i + 1 | 0;
                   continue ;
-              
+
             }
           }
         } else if (c >= 72) {
@@ -376,19 +376,19 @@ function parse_format(fmt) {
           exit = 1;
         } else {
           switch (switcher) {
-            case 3 : 
+            case 3 :
                 f[/* alternate */3] = true;
                 _i = i + 1 | 0;
                 continue ;
-            case 0 : 
-            case 11 : 
+            case 0 :
+            case 11 :
                 exit = 2;
                 break;
-            case 13 : 
+            case 13 :
                 f[/* justify */0] = "-";
                 _i = i + 1 | 0;
                 continue ;
-            case 14 : 
+            case 14 :
                 f[/* prec */9] = 0;
                 var j = i + 1 | 0;
                 while((function(j){
@@ -402,47 +402,47 @@ function parse_format(fmt) {
                 };
                 _i = j;
                 continue ;
-            case 1 : 
-            case 2 : 
-            case 4 : 
-            case 5 : 
-            case 6 : 
-            case 7 : 
-            case 8 : 
-            case 9 : 
-            case 10 : 
-            case 12 : 
-            case 15 : 
+            case 1 :
+            case 2 :
+            case 4 :
+            case 5 :
+            case 6 :
+            case 7 :
+            case 8 :
+            case 9 :
+            case 10 :
+            case 12 :
+            case 15 :
                 exit = 1;
                 break;
-            case 16 : 
+            case 16 :
                 f[/* filter */2] = "0";
                 _i = i + 1 | 0;
                 continue ;
-            case 17 : 
-            case 18 : 
-            case 19 : 
-            case 20 : 
-            case 21 : 
-            case 22 : 
-            case 23 : 
-            case 24 : 
-            case 25 : 
+            case 17 :
+            case 18 :
+            case 19 :
+            case 20 :
+            case 21 :
+            case 22 :
+            case 23 :
+            case 24 :
+            case 25 :
                 exit = 3;
                 break;
-            
+
           }
         }
       }
       switch (exit) {
-        case 1 : 
+        case 1 :
             _i = i + 1 | 0;
             continue ;
-        case 2 : 
+        case 2 :
             f[/* signstyle */1] = String.fromCharCode(c);
             _i = i + 1 | 0;
             continue ;
-        case 3 : 
+        case 3 :
             f[/* width */6] = 0;
             var j$1 = i;
             while((function(j$1){
@@ -456,17 +456,17 @@ function parse_format(fmt) {
             };
             _i = j$1;
             continue ;
-        case 4 : 
+        case 4 :
             f[/* signedconv */5] = true;
             f[/* base */4] = /* Dec */2;
             _i = i + 1 | 0;
             continue ;
-        case 5 : 
+        case 5 :
             f[/* signedconv */5] = true;
             f[/* conv */10] = String.fromCharCode(c);
             _i = i + 1 | 0;
             continue ;
-        
+
       }
     }
   };
@@ -492,7 +492,7 @@ function finish_formatting(param, rawbuffer) {
     } else if (base === /* Hex */1) {
       len = len + 2 | 0;
     }
-    
+
   }
   var buffer = "";
   if (justify === "+" && filter === " ") {
@@ -506,7 +506,7 @@ function finish_formatting(param, rawbuffer) {
     } else if (signstyle !== "-") {
       buffer = buffer + signstyle;
     }
-    
+
   }
   if (alternate && base === /* Oct */0) {
     buffer = buffer + "0";
@@ -545,7 +545,7 @@ function caml_format_int(fmt, i) {
       if (n > 0) {
         s = Caml_utils.repeat(n, "0") + s;
       }
-      
+
     }
     return finish_formatting(f$1, s);
   }
@@ -560,7 +560,7 @@ function caml_int64_format(fmt, x) {
   var s = "";
   var match = f[/* base */4];
   switch (match) {
-    case 0 : 
+    case 0 :
         var wbase = /* int64 */[
           /* hi */0,
           /* lo */8
@@ -603,10 +603,10 @@ function caml_int64_format(fmt, x) {
           };
         }
         break;
-    case 1 : 
+    case 1 :
         s = Caml_int64.to_hex(x$1) + s;
         break;
-    case 2 : 
+    case 2 :
         var wbase$1 = /* int64 */[
           /* hi */0,
           /* lo */10
@@ -653,7 +653,7 @@ function caml_int64_format(fmt, x) {
           };
         }
         break;
-    
+
   }
   if (f[/* prec */9] >= 0) {
     f[/* filter */2] = " ";
@@ -661,7 +661,7 @@ function caml_int64_format(fmt, x) {
     if (n > 0) {
       s = Caml_utils.repeat(n, "0") + s;
     }
-    
+
   }
   return finish_formatting(f, s);
 }
@@ -677,17 +677,17 @@ function caml_format_float(fmt, x) {
   } else if (isFinite(x$1)) {
     var match = f[/* conv */10];
     switch (match) {
-      case "e" : 
+      case "e" :
           s = x$1.toExponential(prec);
           var i = s.length;
           if (s[i - 3 | 0] === "e") {
             s = s.slice(0, i - 1 | 0) + ("0" + s.slice(i - 1 | 0));
           }
           break;
-      case "f" : 
+      case "f" :
           s = x$1.toFixed(prec);
           break;
-      case "g" : 
+      case "g" :
           var prec$1 = prec !== 0 ? prec : 1;
           s = x$1.toExponential(prec$1 - 1 | 0);
           var j = s.indexOf("e");
@@ -705,7 +705,7 @@ function caml_format_float(fmt, x) {
             if (s[i$2 - 3 | 0] === "e") {
               s = s.slice(0, i$2 - 1 | 0) + ("0" + s.slice(i$2 - 1 | 0));
             }
-            
+
           } else {
             var p = prec$1;
             if (exp < 0) {
@@ -729,11 +729,11 @@ function caml_format_float(fmt, x) {
               }
               s = s.slice(0, k + 1 | 0);
             }
-            
+
           }
           break;
       default:
-        
+
     }
   } else {
     s = "inf";
@@ -792,6 +792,6 @@ export {
   caml_int32_of_string ,
   caml_int64_of_string ,
   caml_nativeint_of_string ,
-  
+
 }
 /* float_of_string Not a pure module */

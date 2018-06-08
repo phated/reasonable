@@ -1,7 +1,7 @@
 
 
-import * as Curry from "./curry.js";
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Curry from "stdlib/curry.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function $caret(prim, prim$1) {
   return prim + prim$1;
@@ -128,6 +128,6 @@ export {
   caml_ml_input ,
   caml_ml_input_char ,
   caml_ml_out_channels_list ,
-  
+
 }
 /* node_std_output Not a pure module */

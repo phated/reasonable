@@ -1,7 +1,7 @@
 
 
-import * as Belt_SortArrayInt from "./belt_SortArrayInt.js";
-import * as Belt_internalAVLset from "./belt_internalAVLset.js";
+import * as Belt_SortArrayInt from "stdlib/belt_SortArrayInt.js";
+import * as Belt_internalAVLset from "stdlib/belt_internalAVLset.js";
 
 function has(_t, x) {
   while(true) {
@@ -213,6 +213,6 @@ export {
   getExn ,
   addMutate ,
   fromArray ,
-  
+
 }
 /* No side effect */

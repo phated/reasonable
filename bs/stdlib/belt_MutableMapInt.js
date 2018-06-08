@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_internalMapInt from "./belt_internalMapInt.js";
-import * as Belt_internalAVLtree from "./belt_internalAVLtree.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_internalMapInt from "stdlib/belt_internalMapInt.js";
+import * as Belt_internalAVLtree from "stdlib/belt_internalAVLtree.js";
 
 function make() {
   return {
@@ -369,6 +369,6 @@ export {
   map ,
   mapWithKeyU ,
   mapWithKey ,
-  
+
 }
 /* No side effect */

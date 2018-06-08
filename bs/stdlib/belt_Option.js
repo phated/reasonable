@@ -1,6 +1,6 @@
 
 
-import * as Curry from "./curry.js";
+import * as Curry from "stdlib/curry.js";
 
 function getExn(param) {
   if (param) {
@@ -121,6 +121,6 @@ export {
   eq ,
   cmpU ,
   cmp ,
-  
+
 }
 /* No side effect */

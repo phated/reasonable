@@ -1,10 +1,10 @@
 
 
-import * as List from "./list.js";
-import * as Bytes from "./bytes.js";
-import * as Caml_int32 from "./caml_int32.js";
-import * as Caml_string from "./caml_string.js";
-import * as Caml_primitive from "./caml_primitive.js";
+import * as List from "stdlib/list.js";
+import * as Bytes from "stdlib/bytes.js";
+import * as Caml_int32 from "stdlib/caml_int32.js";
+import * as Caml_string from "stdlib/caml_string.js";
+import * as Caml_primitive from "stdlib/caml_primitive.js";
 
 function make(n, c) {
   return Caml_string.bytes_to_string(Bytes.make(n, c));
@@ -193,6 +193,6 @@ export {
   capitalize ,
   uncapitalize ,
   compare ,
-  
+
 }
 /* No side effect */

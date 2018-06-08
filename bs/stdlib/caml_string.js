@@ -1,6 +1,6 @@
 
 
-import * as Caml_builtin_exceptions from "./caml_builtin_exceptions.js";
+import * as Caml_builtin_exceptions from "stdlib/caml_builtin_exceptions.js";
 
 function string_of_char(prim) {
   return String.fromCharCode(prim);
@@ -194,6 +194,6 @@ export {
   caml_string_get32 ,
   string_of_char ,
   get ,
-  
+
 }
 /* No side effect */

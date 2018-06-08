@@ -1,8 +1,8 @@
 
 
-import * as Curry from "./curry.js";
-import * as Belt_SortArray from "./belt_SortArray.js";
-import * as Belt_internalAVLset from "./belt_internalAVLset.js";
+import * as Curry from "stdlib/curry.js";
+import * as Belt_SortArray from "stdlib/belt_SortArray.js";
+import * as Belt_internalAVLset from "stdlib/belt_internalAVLset.js";
 
 function remove0(nt, x, cmp) {
   var k = nt.value;
@@ -551,6 +551,6 @@ export {
   getExn ,
   split ,
   checkInvariantInternal ,
-  
+
 }
 /* No side effect */
