@@ -67,24 +67,10 @@ func main() {
 
 	var resolveModule v8worker2.ModuleResolverCallback
 	var worker *v8worker2.Worker
-	moduleNames := make(map[string]string)
 
 	resolveModule = func(moduleName, referrerName string) int {
-		if _, exists := moduleNames[moduleName]; exists {
-			return 0
-		}
-
-		var modulePath string
-		if filepath.IsAbs(moduleName) {
-			modulePath = filepath.Clean(moduleName)
-		} else {
-			referrerDir := filepath.Dir(moduleNames[referrerName])
-			modulePath = filepath.Join(referrerDir, moduleName)
-		}
-		moduleNames[moduleName] = modulePath
-
-		if strings.HasPrefix(modulePath, "stdlib/") == true {
-			code, codeErr := box.MustString(modulePath)
+		if strings.HasPrefix(moduleName, "stdlib/") == true {
+			code, codeErr := box.MustString(moduleName)
 			if codeErr != nil {
 				return 1
 			}
