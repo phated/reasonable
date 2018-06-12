@@ -69,15 +69,12 @@ func main() {
 	var worker *v8worker2.Worker
 
 	resolveModule = func(moduleName, referrerName string) int {
-		// TODO: Fix compiler
-		if strings.HasPrefix(moduleName, "stdlib/") == true ||
-			strings.HasPrefix(moduleName, "./stdlib/") == true {
+		if strings.HasPrefix(moduleName, "stdlib/") == true {
 			code, codeErr := box.MustString(moduleName)
 			if codeErr != nil {
 				return 1
 			}
 
-			// TODO: Fix compiler
 			if err := worker.LoadModule(moduleName, code, resolveModule); err != nil {
 				return 1
 			}
