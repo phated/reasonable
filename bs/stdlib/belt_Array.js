@@ -224,6 +224,17 @@ function slice(a, offset, len) {
   }
 }
 
+function sliceToEnd(a, offset) {
+  var lena = a.length;
+  var ofs = offset < 0 ? Caml_primitive.caml_int_max(lena + offset | 0, 0) : offset;
+  var len = lena - ofs | 0;
+  var result = new Array(len);
+  for(var i = 0 ,i_finish = len - 1 | 0; i <= i_finish; ++i){
+    result[i] = a[ofs + i | 0];
+  }
+  return result;
+}
+
 function fill(a, offset, len, v) {
   if (len > 0) {
     var lena = a.length;
@@ -607,6 +618,7 @@ export {
   concat ,
   concatMany ,
   slice ,
+  sliceToEnd ,
   fill ,
   blit ,
   blitUnsafe ,

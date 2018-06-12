@@ -101,11 +101,11 @@ function is_relative(n) {
 }
 
 function is_implicit(n) {
-  if (is_relative(n) && (n.length < 2 || $$String.sub(n, 0, 2) !== "stdlib/")) {
+  if (is_relative(n) && (n.length < 2 || $$String.sub(n, 0, 2) !== "./")) {
     if (n.length < 3) {
       return true;
     } else {
-      return $$String.sub(n, 0, 3) !== ".stdlib/";
+      return $$String.sub(n, 0, 3) !== "../";
     }
   } else {
     return false;
