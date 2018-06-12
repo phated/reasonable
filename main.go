@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+	"reasonable/message"
+	"reasonable/module"
 	"strings"
 
 	"github.com/gobuffalo/packr"
+	flatbuffers "github.com/google/flatbuffers/go"
 	"github.com/ry/v8worker2"
 )
 
@@ -23,28 +24,28 @@ func LoadModuleByFilename(worker *v8worker2.Worker, filename string, resolve v8w
 	return worker.LoadModule(filename, module, resolve)
 }
 
-func ReadAndWrapReason(path string) (string, error) {
-	code, codeErr := ioutil.ReadFile(path)
-	if codeErr != nil {
-		return "", codeErr
-	}
-
-	_, filename := filepath.Split(path)
-	ext := filepath.Ext(filename)
-
-	moduleID := strings.Title(strings.TrimSuffix(filename, ext))
-
-	moduleWrapper := `
-module %s = {
-	%s
-};
-	`
-
-	return fmt.Sprintf(moduleWrapper, moduleID, code), nil
+func CompileCode(worker *v8worker2.Worker) error {
+	builder := flatbuffers.NewBuilder(0)
+	message.MessageStart(builder)
+	message.MessageAddType(builder, message.MessageTypeCompile)
+	msg := message.MessageEnd(builder)
+	builder.Finish(msg)
+	out := builder.FinishedBytes()
+	return worker.SendBytes(out)
 }
 
-func LoadReasonFile(worker *v8worker2.Worker, code []byte) error {
-	return worker.SendBytes(code)
+func RegisterModule(worker *v8worker2.Worker, moduleName string, code []byte) error {
+	builder := flatbuffers.NewBuilder(0)
+	name := builder.CreateString(moduleName)
+	data := builder.CreateByteString(code)
+	message.MessageStart(builder)
+	message.MessageAddType(builder, message.MessageTypeRegisterModule)
+	message.MessageAddName(builder, name)
+	message.MessageAddData(builder, data)
+	msg := message.MessageEnd(builder)
+	builder.Finish(msg)
+	out := builder.FinishedBytes()
+	return worker.SendBytes(out)
 }
 
 func init() {
@@ -63,18 +64,20 @@ func main() {
 	}
 
 	paths := os.Args[1:]
-	// log.Println(paths)
 
 	var resolveModule v8worker2.ModuleResolverCallback
 	var worker *v8worker2.Worker
 
 	resolveModule = func(moduleName, referrerName string) int {
-		if strings.HasPrefix(moduleName, "stdlib/") == true {
+		// TODO: Fix compiler
+		if strings.HasPrefix(moduleName, "stdlib/") == true ||
+			strings.HasPrefix(moduleName, "./stdlib/") == true {
 			code, codeErr := box.MustString(moduleName)
 			if codeErr != nil {
 				return 1
 			}
 
+			// TODO: Fix compiler
 			if err := worker.LoadModule(moduleName, code, resolveModule); err != nil {
 				return 1
 			}
@@ -83,24 +86,50 @@ func main() {
 		return 0
 	}
 
-	worker = v8worker2.New(func(msg []byte) []byte {
-		if worker != nil {
-			err := worker.LoadModule("main.js", string(msg), resolveModule)
+	worker = v8worker2.New(func(data []byte) []byte {
+		if worker == nil {
+			return nil
+		}
+
+		msg := message.GetRootAsMessage(data, 0)
+		msgType := msg.Type()
+		code := msg.Data()
+
+		switch msgType {
+		case message.MessageTypeRun:
+			err := worker.LoadModule("main.js", string(code), resolveModule)
 			if err != nil {
 				log.Println(err)
 				return nil
 			}
+		default:
+			log.Println("Unknown message type:", msgType)
 		}
+
 		return nil
 	})
 
-	// if err := LoadModuleByFilename(worker, "compiler.js", failModuleResolver); err != nil {
+	// TODO: figure out the segfault
+	if err := LoadModuleByFilename(worker, "compiler.js", failModuleResolver); err != nil {
+		log.Println(err)
+		return
+	}
+	if err := LoadModuleByFilename(worker, "refmt.js", failModuleResolver); err != nil {
+		log.Println(err)
+		return
+	}
+	// TODO: Figure out the segfault
 	if err := LoadModuleByFilename(worker, "playground-refmt.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
 
-	if err := LoadModuleByFilename(worker, "refmt.js", failModuleResolver); err != nil {
+	// FlatBuffer stuff
+	if err := LoadModuleByFilename(worker, "flatbuffers.js", failModuleResolver); err != nil {
+		log.Println(err)
+		return
+	}
+	if err := LoadModuleByFilename(worker, "messages_generated.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
@@ -110,23 +139,50 @@ func main() {
 		return
 	}
 
+	if err := LoadModuleByFilename(worker, "topo.js", failModuleResolver); err != nil {
+		log.Println(err)
+		return
+	}
+
 	if err := LoadModuleByFilename(worker, "run.js", resolveModule); err != nil {
 		log.Println(err)
 		return
 	}
 
-	combinedModules := ""
-	for _, path := range paths {
-		module, err := ReadAndWrapReason(path)
+	if len(paths) == 1 {
+		path := paths[0]
+
+		info, err := os.Stat(path)
 		if err != nil {
 			log.Println(err)
 			return
 		}
-		// log.Println(module)
-		combinedModules += module
+
+		if info.IsDir() == true {
+			matches, err := filepath.Glob(filepath.Join(path, "*.re"))
+
+			if err != nil {
+				log.Println(err)
+				return
+			}
+
+			paths = matches
+		}
 	}
-	log.Println(combinedModules)
-	if err := LoadReasonFile(worker, []byte(combinedModules)); err != nil {
+
+	reasonModules := make([]*module.Module, len(paths))
+	for idx, path := range paths {
+		mod := module.NewFromFilepath(path)
+		if err := mod.Load(); err != nil {
+			log.Println(err)
+			return
+		}
+		reasonModules[idx] = mod
+
+		RegisterModule(worker, mod.GetIdentifier(), mod.GetContents())
+	}
+
+	if err := CompileCode(worker); err != nil {
 		log.Println(err)
 		return
 	}
