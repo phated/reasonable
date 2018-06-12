@@ -12,7 +12,13 @@ You can use `[@bs.scope "V8Worker2"] [@bs.val] external print : string => unit =
 This repo contains a pre-built binary for macOS. You can use it like:
 
 ```sh
-> ./reasonable example.re
+> ./reasonable examples/fizzbuzz/Fizzbuzz.re
+```
+
+Or on a directory of files:
+
+```sh
+> ./reasonable examples/dependencies/
 ```
 
 ## License
