@@ -1,0 +1,15 @@
+namespace message;
+
+enum MessageType : byte {
+  Compile = 0,
+  Run,
+  RegisterModule
+}
+
+table Message {
+  type:MessageType;
+  name:string;
+  data:string;
+}
+
+root_type Message;
