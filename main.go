@@ -49,7 +49,7 @@ func RegisterModule(worker *v8worker2.Worker, moduleName string, code []byte) er
 }
 
 func init() {
-	box = packr.NewBox("./bs")
+	box = packr.NewBox("./runtime")
 }
 
 // This can be used when you know there are no deps and you want it to fail.
