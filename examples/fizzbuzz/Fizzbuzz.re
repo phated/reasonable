@@ -1,7 +1,7 @@
 [@bs.scope "V8Worker2"] [@bs.val] external print : string => unit = "print";
 
 /* Based on https://rosettacode.org/wiki/FizzBuzz#OCaml */
-/* let fizzbuzz = (i) =>
+let fizzbuzz = (i) =>
   switch (i mod 3, i mod 5) {
   | (0, 0) => "FizzBuzz"
   | (0, _) => "Fizz"
@@ -11,14 +11,4 @@
 
 for (i in 1 to 100) {
   print(fizzbuzz(i))
-}; */
-
-let student = [|{Foo.name: "Blaine"}, {Foo.name: "Jake"}, {Foo.name: "Nick"}|];
-
-let a = Belt.Array.map(student, s => s.name);
-
-Belt.Array.forEach(a, print);
-
-Js_math.floor_int(2.5);
-
-/* Js.log(""); */
+};
