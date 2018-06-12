@@ -109,17 +109,12 @@ func main() {
 		return nil
 	})
 
-	// TODO: figure out the segfault
+	// BuckleScript compiler and Refmt
 	if err := LoadModuleByFilename(worker, "compiler.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
 	if err := LoadModuleByFilename(worker, "refmt.js", failModuleResolver); err != nil {
-		log.Println(err)
-		return
-	}
-	// TODO: Figure out the segfault
-	if err := LoadModuleByFilename(worker, "playground-refmt.js", failModuleResolver); err != nil {
 		log.Println(err)
 		return
 	}
