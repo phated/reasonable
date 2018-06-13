@@ -38,15 +38,19 @@ func (rcv *Message) MutateType(n int8) bool {
 	return rcv._tab.MutateInt8Slot(4, n)
 }
 
-func (rcv *Message) Name() []byte {
+func (rcv *Message) FileType() int8 {
 	o := flatbuffers.UOffsetT(rcv._tab.Offset(6))
 	if o != 0 {
-		return rcv._tab.ByteVector(o + rcv._tab.Pos)
+		return rcv._tab.GetInt8(o + rcv._tab.Pos)
 	}
-	return nil
+	return 0
 }
 
-func (rcv *Message) Data() []byte {
+func (rcv *Message) MutateFileType(n int8) bool {
+	return rcv._tab.MutateInt8Slot(6, n)
+}
+
+func (rcv *Message) Name() []byte {
 	o := flatbuffers.UOffsetT(rcv._tab.Offset(8))
 	if o != 0 {
 		return rcv._tab.ByteVector(o + rcv._tab.Pos)
@@ -54,17 +58,28 @@ func (rcv *Message) Data() []byte {
 	return nil
 }
 
+func (rcv *Message) Data() []byte {
+	o := flatbuffers.UOffsetT(rcv._tab.Offset(10))
+	if o != 0 {
+		return rcv._tab.ByteVector(o + rcv._tab.Pos)
+	}
+	return nil
+}
+
 func MessageStart(builder *flatbuffers.Builder) {
-	builder.StartObject(3)
+	builder.StartObject(4)
 }
 func MessageAddType(builder *flatbuffers.Builder, type_ int8) {
 	builder.PrependInt8Slot(0, type_, 0)
 }
+func MessageAddFileType(builder *flatbuffers.Builder, fileType int8) {
+	builder.PrependInt8Slot(1, fileType, 0)
+}
 func MessageAddName(builder *flatbuffers.Builder, name flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(name), 0)
+	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(name), 0)
 }
 func MessageAddData(builder *flatbuffers.Builder, data flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(data), 0)
+	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(data), 0)
 }
 func MessageEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()

@@ -5,7 +5,7 @@ import { Topo } from 'topo.js';
 import { compiler } from 'compiler.js';
 import { refmt } from 'refmt.js';
 
-const { MessageType, Message } = message;
+const { MessageType, Message, FileType } = message;
 
 const modules = new Map();
 const dependencies = new Topo();
@@ -47,9 +47,22 @@ function runCode(code) {
   V8Worker2.send(typedArrayToArrayBuffer(ta));
 }
 
-function registerModule(name, code) {
-  // Parse/Print here so we don't need to do a second pass upon compile
-  const ocamlCode = refmt.printML(refmt.parseRE(code));
+function registerModule(name, fileType, code) {
+  V8Worker2.print(code)
+  let ocamlCode = '';
+  if (fileType === FileType.Reason) {
+    // Parse/Print here so we don't need to do a second pass upon compile
+    ocamlCode = refmt.printML(refmt.parseRE(code));
+  }
+
+  if (fileType === FileType.OCaml) {
+    // V8Worker2.print(refmt.parseML(code))
+    ocamlCode = code
+  }
+
+  if (fileType === FileType.JavaScript) {
+    throw new Error('javascript file type unsupported');
+  }
   const deps = parseDeps(ocamlCode);
   dependencies.add(name, { after: deps, group: name });
   modules.set(name, ocamlCode);
@@ -102,8 +115,9 @@ V8Worker2.recv(function(bytes) {
     }
     case MessageType.RegisterModule: {
       const name = msg.name();
+      const fileType = msg.fileType();
       const code = msg.data();
-      return registerModule(name, code);
+      return registerModule(name, fileType, code);
     }
     default: {
       V8Worker2.print(`Unknown msg type`);

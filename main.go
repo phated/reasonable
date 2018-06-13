@@ -49,12 +49,13 @@ func CompileCode(worker *v8worker2.Worker) error {
 	return worker.SendBytes(out)
 }
 
-func RegisterModule(worker *v8worker2.Worker, moduleName string, code []byte) error {
+func RegisterModule(worker *v8worker2.Worker, mod module.Module) error {
 	builder := flatbuffers.NewBuilder(0)
-	name := builder.CreateString(moduleName)
-	data := builder.CreateByteString(code)
+	name := builder.CreateString(mod.GetIdentifier())
+	data := builder.CreateByteString(mod.GetContents())
 	message.MessageStart(builder)
 	message.MessageAddType(builder, message.MessageTypeRegisterModule)
+	message.MessageAddFileType(builder, mod.GetFileType())
 	message.MessageAddName(builder, name)
 	message.MessageAddData(builder, data)
 	msg := message.MessageEnd(builder)
@@ -162,27 +163,31 @@ func main() {
 		}
 
 		if info.IsDir() == true {
-			matches, err := filepath.Glob(filepath.Join(path, "*.re"))
+			reMatches, reErr := filepath.Glob(filepath.Join(path, "*.re"))
 
-			if err != nil {
-				log.Println(err)
+			if reErr != nil {
+				log.Println(reErr)
 				return
 			}
 
-			paths = matches
+			mlMatches, mlErr := filepath.Glob(filepath.Join(path, "*.ml"))
+			if mlErr != nil {
+				log.Println(mlErr)
+				return
+			}
+
+			paths = append(reMatches, mlMatches...)
 		}
 	}
 
-	reasonModules := make([]*module.Module, len(paths))
-	for idx, path := range paths {
+	for _, path := range paths {
 		mod := module.NewFromFilepath(path)
 		if err := mod.Load(); err != nil {
 			log.Println(err)
 			return
 		}
-		reasonModules[idx] = mod
 
-		RegisterModule(worker, mod.GetIdentifier(), mod.GetContents())
+		RegisterModule(worker, mod)
 	}
 
 	if err := CompileCode(worker); err != nil {

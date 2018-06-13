@@ -6,11 +6,12 @@ import (
 	"io/ioutil"
 	"log"
 	"path/filepath"
+	"reasonable/message"
 	"strings"
 )
 
 type Module struct {
-	fileType          string
+	fileType          int8
 	identifier        string
 	interfacePath     *string
 	interfaceContents []byte
@@ -20,32 +21,31 @@ type Module struct {
 	compiledContents  *string
 }
 
-func NewFromFilepath(sourcePath string) *Module {
+func NewFromFilepath(sourcePath string) Module {
 	_, filename := filepath.Split(sourcePath)
 	ext := filepath.Ext(sourcePath)
-	var fileType string
+	var fileType int8
 	var interfacePath string
 
 	identifier := strings.Title(strings.TrimSuffix(filename, ext))
 
 	// TODO: select/case
 	if ext == ".re" {
-		fileType = "reason"
+		fileType = message.FileTypeReason
 		interfacePath = sourcePath + "i"
 	}
 
 	if ext == ".ml" {
-		fileType = "ocaml"
+		fileType = message.FileTypeOCaml
 		interfacePath = sourcePath + "i"
-		log.Fatalln("no support for .ml yet")
 	}
 
 	if ext == ".js" {
-		fileType = "javascript"
+		fileType = message.FileTypeJavaScript
 		log.Fatalln("no support for .js yet")
 	}
 
-	return &Module{
+	return Module{
 		fileType:      fileType,
 		identifier:    identifier,
 		sourcePath:    &sourcePath,
@@ -114,15 +114,31 @@ func (m *Module) WrapContents() {
 		return
 	}
 
-	if m.interfaceContents != nil {
-		moduleWrapper := `module %s: { %s } = { %s }`
-		m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.interfaceContents, m.sourceContents)
-	} else {
-		moduleWrapper := `module %s = { %s };`
-		m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
+	if m.fileType == message.FileTypeReason {
+		if m.interfaceContents != nil {
+			moduleWrapper := `module %s: { %s } = { %s }`
+			m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.interfaceContents, m.sourceContents)
+		} else {
+			moduleWrapper := `module %s = { %s };`
+			m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
+		}
+	}
+
+	if m.fileType == message.FileTypeOCaml {
+		if m.interfaceContents != nil {
+			moduleWrapper := `module %s : sig %s end = struct %s end`
+			m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.interfaceContents, m.sourceContents)
+		} else {
+			moduleWrapper := `module %s = struct %s end`
+			m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
+		}
 	}
 }
 
 func (m *Module) GetContents() []byte {
 	return []byte(m.modifiedContents)
+}
+
+func (m *Module) GetFileType() int8 {
+	return m.fileType
 }

@@ -16,6 +16,15 @@ message.MessageType = {
 };
 
 /**
+ * @enum
+ */
+message.FileType = {
+  Reason: 0,
+  OCaml: 1,
+  JavaScript: 2
+};
+
+/**
  * @constructor
  */
 message.Message = function() {
@@ -59,11 +68,19 @@ message.Message.prototype.type = function() {
 };
 
 /**
+ * @returns {message.FileType}
+ */
+message.Message.prototype.fileType = function() {
+  var offset = this.bb.__offset(this.bb_pos, 6);
+  return offset ? /** @type {message.FileType} */ (this.bb.readInt8(this.bb_pos + offset)) : message.FileType.Reason;
+};
+
+/**
  * @param {flatbuffers.Encoding=} optionalEncoding
  * @returns {string|Uint8Array|null}
  */
 message.Message.prototype.name = function(optionalEncoding) {
-  var offset = this.bb.__offset(this.bb_pos, 6);
+  var offset = this.bb.__offset(this.bb_pos, 8);
   return offset ? this.bb.__string(this.bb_pos + offset, optionalEncoding) : null;
 };
 
@@ -72,7 +89,7 @@ message.Message.prototype.name = function(optionalEncoding) {
  * @returns {string|Uint8Array|null}
  */
 message.Message.prototype.data = function(optionalEncoding) {
-  var offset = this.bb.__offset(this.bb_pos, 8);
+  var offset = this.bb.__offset(this.bb_pos, 10);
   return offset ? this.bb.__string(this.bb_pos + offset, optionalEncoding) : null;
 };
 
@@ -80,7 +97,7 @@ message.Message.prototype.data = function(optionalEncoding) {
  * @param {flatbuffers.Builder} builder
  */
 message.Message.startMessage = function(builder) {
-  builder.startObject(3);
+  builder.startObject(4);
 };
 
 /**
@@ -93,10 +110,18 @@ message.Message.addType = function(builder, type) {
 
 /**
  * @param {flatbuffers.Builder} builder
+ * @param {message.FileType} fileType
+ */
+message.Message.addFileType = function(builder, fileType) {
+  builder.addFieldInt8(1, fileType, message.FileType.Reason);
+};
+
+/**
+ * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} nameOffset
  */
 message.Message.addName = function(builder, nameOffset) {
-  builder.addFieldOffset(1, nameOffset, 0);
+  builder.addFieldOffset(2, nameOffset, 0);
 };
 
 /**
@@ -104,7 +129,7 @@ message.Message.addName = function(builder, nameOffset) {
  * @param {flatbuffers.Offset} dataOffset
  */
 message.Message.addData = function(builder, dataOffset) {
-  builder.addFieldOffset(2, dataOffset, 0);
+  builder.addFieldOffset(3, dataOffset, 0);
 };
 
 /**

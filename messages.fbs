@@ -6,8 +6,15 @@ enum MessageType : byte {
   RegisterModule
 }
 
+enum FileType : byte {
+  Reason = 0,
+  OCaml,
+  JavaScript
+}
+
 table Message {
   type:MessageType;
+  fileType:FileType;
   name:string;
   data:string;
 }
