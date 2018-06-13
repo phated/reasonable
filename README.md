@@ -8,6 +8,7 @@ The ReasonML runtime.
 * Accepts a single file or a directory containing `.re` files.
 * Native ES imports/exports are used for modules.
 * Most of BuckleScript's `stdlib` should work (including Belt!) - though some JS stuff like `Js.log` is still a WIP.
+* Shebang support! See the [shebang example](./examples/shebang/Shebang.re).
 
 ## Notes
 
