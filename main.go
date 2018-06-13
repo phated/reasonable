@@ -1,22 +1,37 @@
+//go:generate go run generate.go
+
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"reasonable/message"
 	"reasonable/module"
+	"reasonable/runtime"
 	"strings"
 
-	"github.com/gobuffalo/packr"
 	flatbuffers "github.com/google/flatbuffers/go"
 	"github.com/ry/v8worker2"
 )
 
-var box packr.Box
+func OpenAsset(filename string) (string, error) {
+	file, fileErr := runtime.Assets.Open(filename)
+	if fileErr != nil {
+		return "", fileErr
+	}
+
+	contents, contentsErr := ioutil.ReadAll(file)
+	if contentsErr != nil {
+		return "", contentsErr
+	}
+
+	return string(contents), nil
+}
 
 func LoadModuleByFilename(worker *v8worker2.Worker, filename string, resolve v8worker2.ModuleResolverCallback) error {
-	module, moduleErr := box.MustString(filename)
+	module, moduleErr := OpenAsset(filename)
 	if moduleErr != nil {
 		return moduleErr
 	}
@@ -48,10 +63,6 @@ func RegisterModule(worker *v8worker2.Worker, moduleName string, code []byte) er
 	return worker.SendBytes(out)
 }
 
-func init() {
-	box = packr.NewBox("./runtime")
-}
-
 // This can be used when you know there are no deps and you want it to fail.
 func failModuleResolver(_, _ string) int {
 	return 1
@@ -70,12 +81,12 @@ func main() {
 
 	resolveModule = func(moduleName, referrerName string) int {
 		if strings.HasPrefix(moduleName, "stdlib/") == true {
-			code, codeErr := box.MustString(moduleName)
-			if codeErr != nil {
+			module, moduleErr := OpenAsset(moduleName)
+			if moduleErr != nil {
 				return 1
 			}
 
-			if err := worker.LoadModule(moduleName, code, resolveModule); err != nil {
+			if err := worker.LoadModule(moduleName, module, resolveModule); err != nil {
 				return 1
 			}
 		}
