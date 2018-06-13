@@ -1,6 +1,7 @@
 package module
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -15,7 +16,7 @@ type Module struct {
 	interfaceContents []byte
 	sourcePath        *string
 	sourceContents    []byte
-	wrappedContents   string
+	modifiedContents  string
 	compiledContents  *string
 }
 
@@ -52,17 +53,6 @@ func NewFromFilepath(sourcePath string) *Module {
 	}
 }
 
-func CombineModules(modules []*Module) []byte {
-	//TODO: dependency resolution?
-	out := []byte{}
-	for _, mod := range modules {
-		contents := mod.GetContents()
-		out = append(out, contents...)
-	}
-
-	return out
-}
-
 func (m *Module) GetIdentifier() string {
 	return m.identifier
 }
@@ -76,6 +66,7 @@ func (m *Module) Load() error {
 		return err
 	}
 
+	m.CommentShebang()
 	m.WrapContents()
 
 	return nil
@@ -106,6 +97,18 @@ func (m *Module) LoadInterface() error {
 	return nil
 }
 
+func (m *Module) CommentShebang() {
+	// We comment the shebang to keep line numbers the same
+	// TODO: Use // comment when refmt ships it
+	// TODO: Update to comment correctly for ocaml/JS files
+	if m.sourceContents[0] == '#' &&
+		m.sourceContents[1] == '!' {
+		beginComment := bytes.Replace(m.sourceContents, []byte("#!"), []byte("/*#!"), 1)
+		endComment := bytes.Replace(beginComment, []byte("\n"), []byte("*/\n"), 1)
+		m.sourceContents = endComment
+	}
+}
+
 func (m *Module) WrapContents() {
 	if m.sourceContents == nil {
 		return
@@ -114,9 +117,9 @@ func (m *Module) WrapContents() {
 	// TODO: Interface files
 	moduleWrapper := `module %s = { %s };`
 
-	m.wrappedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
+	m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
 }
 
 func (m *Module) GetContents() []byte {
-	return []byte(m.wrappedContents)
+	return []byte(m.modifiedContents)
 }
