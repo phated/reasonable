@@ -1,3 +1,4 @@
+/* TODO: This ***sometimes*** crashes and I don't know why (something about malloc) */
 [@bs.scope "V8Worker2"] [@bs.val] external print : string => unit = "print";
 
 open Belt;
