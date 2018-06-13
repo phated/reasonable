@@ -1,9 +1,12 @@
-build:
+# TODO: It'd be nice to not have to run this each time
+assets:
+	rm runtime/static_contents.go || true
 	go generate
+
+build: assets
 	go build -o reasonable main.go
 
-run:
-	go generate
+run: assets
 	go run main.go examples/fizzbuzz/
 
 flatbuffers: messages.fbs
