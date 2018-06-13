@@ -114,10 +114,13 @@ func (m *Module) WrapContents() {
 		return
 	}
 
-	// TODO: Interface files
-	moduleWrapper := `module %s = { %s };`
-
-	m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
+	if m.interfaceContents != nil {
+		moduleWrapper := `module %s: { %s } = { %s }`
+		m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.interfaceContents, m.sourceContents)
+	} else {
+		moduleWrapper := `module %s = { %s };`
+		m.modifiedContents = fmt.Sprintf(moduleWrapper, m.identifier, m.sourceContents)
+	}
 }
 
 func (m *Module) GetContents() []byte {
