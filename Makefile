@@ -7,7 +7,7 @@ build: assets
 	go build -o reasonable main.go
 
 run: assets
-	go run main.go examples/fizzbuzz/
+	go run main.go $(example)
 
 flatbuffers: messages.fbs
 	flatc --go --js --es6-js-export messages.fbs
