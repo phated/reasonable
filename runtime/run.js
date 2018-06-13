@@ -48,7 +48,6 @@ function runCode(code) {
 }
 
 function registerModule(name, fileType, code) {
-  V8Worker2.print(code)
   let ocamlCode = '';
   if (fileType === FileType.Reason) {
     // Parse/Print here so we don't need to do a second pass upon compile
@@ -56,7 +55,6 @@ function registerModule(name, fileType, code) {
   }
 
   if (fileType === FileType.OCaml) {
-    // V8Worker2.print(refmt.parseML(code))
     ocamlCode = code
   }
 
