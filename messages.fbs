@@ -8,8 +8,7 @@ enum MessageType : byte {
 
 enum FileType : byte {
   Reason = 0,
-  OCaml,
-  JavaScript
+  OCaml
 }
 
 table Message {

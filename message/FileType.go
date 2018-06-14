@@ -5,12 +5,10 @@ package message
 const (
 	FileTypeReason = 0
 	FileTypeOCaml = 1
-	FileTypeJavaScript = 2
 )
 
 var EnumNamesFileType = map[int]string{
 	FileTypeReason:"Reason",
 	FileTypeOCaml:"OCaml",
-	FileTypeJavaScript:"JavaScript",
 }
 

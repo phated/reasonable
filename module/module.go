@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"path/filepath"
 	"strings"
 
@@ -30,20 +29,13 @@ func NewFromFilepath(sourcePath string) Module {
 
 	identifier := strings.Title(strings.TrimSuffix(filename, ext))
 
-	// TODO: select/case
-	if ext == ".re" {
+	switch ext {
+	case ".re":
 		fileType = message.FileTypeReason
 		interfacePath = sourcePath + "i"
-	}
-
-	if ext == ".ml" {
+	case ".ml":
 		fileType = message.FileTypeOCaml
 		interfacePath = sourcePath + "i"
-	}
-
-	if ext == ".js" {
-		fileType = message.FileTypeJavaScript
-		log.Fatalln("no support for .js yet")
 	}
 
 	return Module{

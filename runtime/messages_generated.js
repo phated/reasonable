@@ -20,8 +20,7 @@ message.MessageType = {
  */
 message.FileType = {
   Reason: 0,
-  OCaml: 1,
-  JavaScript: 2
+  OCaml: 1
 };
 
 /**

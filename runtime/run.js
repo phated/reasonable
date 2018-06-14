@@ -58,9 +58,6 @@ function registerModule(name, fileType, code) {
     ocamlCode = code
   }
 
-  if (fileType === FileType.JavaScript) {
-    throw new Error('javascript file type unsupported');
-  }
   const deps = parseDeps(ocamlCode);
   dependencies.add(name, { after: deps, group: name });
   modules.set(name, ocamlCode);
