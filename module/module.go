@@ -6,8 +6,9 @@ import (
 	"io/ioutil"
 	"log"
 	"path/filepath"
-	"reasonable/message"
 	"strings"
+
+	"github.com/phated/reasonable/message"
 )
 
 type Module struct {

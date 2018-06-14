@@ -7,12 +7,12 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"reasonable/message"
-	"reasonable/module"
-	"reasonable/runtime"
 	"strings"
 
 	flatbuffers "github.com/google/flatbuffers/go"
+	"github.com/phated/reasonable/message"
+	"github.com/phated/reasonable/module"
+	"github.com/phated/reasonable/runtime"
 	"github.com/ry/v8worker2"
 )
 
