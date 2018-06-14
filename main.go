@@ -105,6 +105,8 @@ func main() {
 			if err := worker.LoadModule(moduleName, module, resolveModule); err != nil {
 				return 1
 			}
+
+			return 0
 		}
 
 		module, moduleErr := findModule(moduleName)
