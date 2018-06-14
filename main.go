@@ -3,6 +3,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -76,9 +77,23 @@ func main() {
 	}
 
 	paths := os.Args[1:]
+	searchPaths := []string{}
 
 	var resolveModule v8worker2.ModuleResolverCallback
 	var worker *v8worker2.Worker
+
+	findModule := func(moduleName string) (string, error) {
+		for _, path := range searchPaths {
+			module, moduleErr := ioutil.ReadFile(filepath.Join(path, moduleName))
+			if moduleErr != nil {
+				continue
+			}
+
+			return string(module), nil
+		}
+
+		return "", fmt.Errorf("Unable to find module: %s", moduleName)
+	}
 
 	resolveModule = func(moduleName, referrerName string) int {
 		if strings.HasPrefix(moduleName, "stdlib/") == true {
@@ -90,6 +105,15 @@ func main() {
 			if err := worker.LoadModule(moduleName, module, resolveModule); err != nil {
 				return 1
 			}
+		}
+
+		module, moduleErr := findModule(moduleName)
+		if moduleErr != nil {
+			return 1
+		}
+
+		if err := worker.LoadModule(moduleName, module, resolveModule); err != nil {
+			return 1
 		}
 
 		return 0
@@ -181,6 +205,14 @@ func main() {
 	}
 
 	for _, path := range paths {
+		absPath, absErr := filepath.Abs(path)
+		if absErr != nil {
+			log.Println(absErr)
+			return
+		}
+
+		searchPaths = append(searchPaths, filepath.Dir(absPath))
+
 		mod := module.NewFromFilepath(path)
 		if err := mod.Load(); err != nil {
 			log.Println(err)
